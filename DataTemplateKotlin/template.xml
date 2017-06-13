@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="DataTemplateKotlin"
+    minApi="9"
+    minBuildApi="14"
+    description="Creates a new DataLayer">
+
+    <category value="CleanArchitecture" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="dataLayerTagName"
+        name="Data Tag name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the data class tag to create" />
+
+    <parameter
+        id="dataSourceName"
+        name="DataSource interface Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${dataLayerTagName}DataSource"
+        default="MainDataSource"
+        help="The name of the data source interface name to create" />
+
+    <parameter
+        id="dataRepositoryName"
+        name="DataRepository class Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${dataLayerTagName}Repository"
+        default="MainRepository"
+        help="The name of the data repository name to create" />
+
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

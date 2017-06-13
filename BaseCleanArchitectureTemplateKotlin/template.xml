@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="CleanArchitectureTemplate(call once per Project)"
+    minApi="9"
+    minBuildApi="14"
+    description="Create cleanArchitecture base">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="appClassName"
+        name="Application Class Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainApplication"
+        help="The name of the Application class name to create" />
+
+    <parameter
+        id="createKotlinDir"
+        name="Create kotlin src dirs?"
+        type="boolean"
+        default="true"
+        help="kotlin src dir" />
+
+    <parameter
+        id="includeRealm"
+        name="Need Realm?"
+        type="boolean"
+        default="true"
+        help="include Realm" />
+
+    <parameter
+        id="includeRetrofit"
+        name="Need retrofit2?"
+        type="boolean"
+        default="true"
+        help="include retrofit2" />
+
+    <parameter
+        id="useSwagger"
+        name="Use Swagger?"
+        type="boolean"
+        visibility="includeRetrofit"
+        default="true"
+        help="Please check this if the Retrofit API was created by Swagger(RxJava2 used)" />
+
+
+
+    <parameter
+        id="packageName"
+        name="Root package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

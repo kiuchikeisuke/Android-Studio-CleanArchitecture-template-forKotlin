@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="DomainUseCaseTemplateKotlin"
+    minApi="9"
+    minBuildApi="14"
+    description="Creates a new UseCase Domain">
+
+    <category value="CleanArchitecture" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="useCaseName"
+        name="UseCase class Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainUseCase"
+        help="The name of the usecase class name to create" />
+
+    <parameter
+        id="existInput"
+        name="Exist INPUT Params"
+        type="boolean"
+        default="true"
+        help="If exist INPUT Params, check this" />
+    <parameter
+        id="existOutput"
+        name="Exist OUTPUT Params"
+        type="boolean"
+        default="true"
+        help="If exist OUTPUT Params, check this" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
