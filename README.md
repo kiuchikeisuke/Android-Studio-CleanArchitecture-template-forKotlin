@@ -176,16 +176,17 @@ This Layer Provide Bussiness Logic and connect DataLayer to PresentationLayer.
 This template create presenter-layer template.
 ![presenterActivityTemplate](static/presenterActivityTemplate.png)
 
-This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass, ActivityClass and FragmentClass.
+This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass, ActivityClass, FragmentClass and fragment.xml.
 
 And then, please see ActivityClass. The following notice is written there.
 ```
 /* FIXME 1st:MUST add below method to RootComponent */
-// fun new${componentName}(module: ${moduleName}): ${componentName}
+// fun newSomeComponent(module: SomeModule): SomeComponent
 
-/* FIXME 2nd:initialize ${componentName} like this */
+/* FIXME 2nd:initialize SomeComponent like this */
 (application as MainApplication).rootComponent
-.new${componentName}(${moduleName}(fragment as ${contractName}.View)).inject(fragment)
+        .newSomeComponent(SomeModule(fragment as SomeContract.View))
+        .inject(fragment)
 ```
 
 So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
@@ -199,7 +200,7 @@ This template create presenter-layer template.
 
 This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ServiceClass.
 
-And then, please see ActivityClass. The following notice is written there.
+And then, please see ServiceClass. The following notice is written there.
 ```
 /* FIXME 1st:MUST add below method to RootComponent */
 // fun newMainComponent(module: MainModule): MainComponent
@@ -216,3 +217,8 @@ And presenterClass communicate domain-layer.
 
 ## Example
 Very simple example is in the Example folder.
+
+## 日本語の説明
+Qiitaに以下の記事を公開したのでそちらを参照
+
+「[Kotlin用のCleanArchitectureのテンプレート作ったよ！](http://qiita.com/k_keisuke/items/38bf26e711b6918703b8)」
