@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="PresenterBroadcastReceiverTemplateKotlin"
+    minApi="9"
+    minBuildApi="14"
+    description="Creates a new PresenterLayer">
+
+    <category value="CleanArchitecture" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="presenterTagName"
+        name="Presenter Tag name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the presenter tag to create" />
+
+    <parameter
+        id="componentName"
+        name="Component Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Component"
+        default="MainComponent"
+        help="The name of the component interface name to create" />
+
+    <parameter
+        id="contractName"
+        name="Contract Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Contract"
+        default="MainContract"
+        help="The name of the contract interface name to create" />
+
+    <parameter
+        id="moduleName"
+        name="Module Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Module"
+        default="MainModule"
+        help="The name of the Module class name to create" />
+
+    <parameter
+        id="presenterName"
+        name="Presenter Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Presenter"
+        default="MainPresenter"
+        help="The name of the Presenter class name to create" />
+
+    <parameter
+        id="receiverName"
+        name="BroadcastReceiver Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Receiver"
+        default="MainReceiver"
+        help="The name of the BroadcastReceiver class name to create" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

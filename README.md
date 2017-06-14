@@ -72,6 +72,7 @@ Just copy all 5 directories
 - `DomainTemplateKotlin`
 - `PresenterActivityTemplateKotlin`
 - `PresenterServiceTemplateKotlin`
+- `PresenterBroadcastReceiverTemplateKotlin`
 
 and paste to `$ANDROID_STUDIO_FOLDER$/Contents/plugins/android/lib/templates/activities/`
 
@@ -83,6 +84,7 @@ Just copy all 5 directories
 - `DomainTemplateKotlin`
 - `PresenterActivityTemplateKotlin`
 - `PresenterServiceTemplateKotlin`
+- `PresenterBroadcastReceiverTemplateKotlin`
 
 and paste to  `$ANDROID_STUDIO_FOLDER$\plugins\android\lib\templates\activities\`
 
@@ -213,6 +215,27 @@ And then, please see ServiceClass. The following notice is written there.
 So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
 
 This Layer Provides UserInterface(Service).
+And presenterClass communicate domain-layer.
+
+#### PresenterBroadCastReceiverTemplateKotlin
+This template create presenter-layer template.
+![presenterBroadCastReceiverTemplate](static/presenterBCRTemplate.png)
+
+This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ReceiverClass.
+
+And then, please see ReceiverClass. The following notice is written there.
+```
+/* FIXME 1st:MUST add below method to RootComponent */
+// fun newMainComponent(module: MainModule): MainComponent
+
+/* FIXME 2nd:initialize MainComponent like this */
+(context!!.applicationContext as MainApplication).rootComponent
+        .newMainComponent(MainModule(this)).inject(this)
+```
+
+So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
+
+This Layer Provides UserInterface(BroadCastReceiver).
 And presenterClass communicate domain-layer.
 
 ## Example
