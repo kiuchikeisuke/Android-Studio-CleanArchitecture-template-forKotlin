@@ -2,7 +2,7 @@ package ${packageName}.utils.commons
 
 import io.reactivex.observers.DisposableObserver
 
-class DefaultDisposableObserver<T>: DisposableObserver<T>() {
+open class DefaultDisposableObserver<T>: DisposableObserver<T>() {
     override fun onNext(t: T) {
         //no-op
     }
