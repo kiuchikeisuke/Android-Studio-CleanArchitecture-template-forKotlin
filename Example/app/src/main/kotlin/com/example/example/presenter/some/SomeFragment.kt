@@ -34,6 +34,11 @@ class SomeFragment : Fragment(), SomeContract.View {
         input1Button.setOnClickListener { presenter.loadData(1) }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.dispose()
+    }
+
     companion object {
         fun newInstance(): SomeFragment {
             val args = Bundle()
