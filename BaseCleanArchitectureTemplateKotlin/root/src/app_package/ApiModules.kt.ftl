@@ -35,7 +35,7 @@ class ApiModules {
 private fun createApiClient(retrofitBuilder:Retrofit.Builder,
                             builder: OkHttpClient.Builder): ApiClient {
     val client = ApiClient()
-    client.setAdapterBuilder(retrofitBuilder)
+    client.adapterBuilder = retrofitBuilder
     client.configureFromOkclient(builder.build())
     return client
 }
