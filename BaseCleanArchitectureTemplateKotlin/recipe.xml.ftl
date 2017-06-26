@@ -15,6 +15,7 @@
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/commons"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/exceptions"/>
+    <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions"/>
 
 
     <#-- init build.gradle -->
@@ -73,7 +74,10 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/SimpleUseCase.kt" />
     <instantiate from="root/src/app_package/UseCase.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/UseCase.kt" />
-
+    <#if includeRealm>
+        <instantiate from="root/src/app_package/Observable.kt.ftl"
+                      to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Observable.kt" />
+    </#if>
 
     <#-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
