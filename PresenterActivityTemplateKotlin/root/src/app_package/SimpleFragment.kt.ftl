@@ -19,6 +19,11 @@ class ${fragmentName} : Fragment(), ${contractName}.View {
         return view
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.dispose()
+    }
+
     companion object {
         fun newInstance(): ${fragmentName} {
             val args = Bundle()
