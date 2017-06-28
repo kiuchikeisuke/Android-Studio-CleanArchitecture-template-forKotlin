@@ -5,19 +5,17 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import butterknife.bindView
 import com.example.example.R
 import com.example.example.data.entity.SomeDataEntity
+import kotlinx.android.synthetic.main.some_fragment.*
 import javax.inject.Inject
 
 class SomeFragment : Fragment(), SomeContract.View {
     @Inject lateinit var presenter: SomePresenter
 
-    val inputText: TextView by bindView<TextView>(R.id.inputText)
-    val input0Button: Button by bindView<Button>(R.id.input0Button)
-    val input1Button: Button by bindView<Button>(R.id.input1Button)
+    val inputText: TextView by bindView<TextView>(R.id.inputText) //KotterKnife
 
     override fun show(someDataEntity: SomeDataEntity) {
         inputText.text = someDataEntity.resParam1
@@ -30,8 +28,8 @@ class SomeFragment : Fragment(), SomeContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        input0Button.setOnClickListener { presenter.loadData(0) }
-        input1Button.setOnClickListener { presenter.loadData(1) }
+        input_0_button.setOnClickListener { presenter.loadData(0) } //Kotlin Android Extensions
+        input_1_button.setOnClickListener { presenter.loadData(1) } //Kotlin Android Extensions
     }
 
     override fun onDestroy() {

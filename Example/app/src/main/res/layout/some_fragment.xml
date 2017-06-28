@@ -9,12 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/input1Button"
+        android:id="@+id/input_1_button"
         android:text="Input 1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/input0Button"
+        android:id="@+id/input_0_button"
         android:text="Input 0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

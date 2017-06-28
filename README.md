@@ -50,7 +50,9 @@ You must satisfy the following conditions.
 - [Kotlin](https://kotlinlang.org/)**(Recommended to use [Android-Studio 3.0](https://developer.android.com/studio/preview/index.html))**
 - [Dagger2](https://google.github.io/dagger/) for dependency injection
 - [RxJava2](https://github.com/ReactiveX/RxJava) for Asynchronous processing.
-- [KotterKnife](https://github.com/JakeWharton/kotterknife) for View Initialization (**Non-essential but Recommended**)
+- [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html)
+- [KotterKnife](https://github.com/JakeWharton/kotterknife) for View Initialization (**Non-essential**)
+
 
 ## Installation
 
