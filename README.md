@@ -136,12 +136,14 @@ So, Please correct the file as follows.
 - apply {
 -     plugin: 'kotlin-android'
 -     plugin: 'kotlin-kapt'
+-     apply plugin: 'kotlin-android-extensions'
 - }
 
 + apply plugin: 'com.android.application'
 + apply plugin: 'realm-android'
 + apply plugin: 'kotlin-android'
 + apply plugin: 'kotlin-kapt'
++ apply plugin: 'kotlin-android-extensions'
 ```
 
 ### Use CleanArchitecture Template
