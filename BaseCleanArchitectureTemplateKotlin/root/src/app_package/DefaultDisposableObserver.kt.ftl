@@ -2,16 +2,12 @@ package ${packageName}.utils.commons
 
 import io.reactivex.observers.DisposableObserver
 
-open class DefaultDisposableObserver<T>: DisposableObserver<T>() {
-    override fun onNext(t: T) {
-        //no-op
-    }
+class DefaultDisposableObserver<T>(val next:(T)->Unit = {},
+                                        val error:(Throwable?)->Unit = {},
+                                        val complete:()->Unit = {}) : DisposableObserver<T>() {
+    override fun onNext(t: T): Unit = next(t)
 
-    override fun onError(e: Throwable?) {
-        //no-op
-    }
+    override fun onError(e: Throwable?): Unit = error(e)
 
-    override fun onComplete() {
-        //no-op
-    }
+    override fun onComplete(): Unit = complete()
 }

@@ -11,13 +11,7 @@ class SomePresenter @Inject constructor(private val view:SomeContract.View, priv
     }
 
     override fun loadData(inputParam: Int) {
-        getSomeData.execute(GetSomeData.GetSomeDataRequest(inputParam),object: DefaultDisposableObserver<GetSomeData.GetSomeDataResponse>(){
-            override fun onNext(t: GetSomeData.GetSomeDataResponse) {
-                super.onNext(t)
-                view.show(t.someDataEntity)
-            }
-        })
-
+        getSomeData.execute(GetSomeData.GetSomeDataRequest(inputParam),DefaultDisposableObserver<GetSomeData.GetSomeDataResponse>(next = {view.show(it.someDataEntity)}))
     }
 
 }
