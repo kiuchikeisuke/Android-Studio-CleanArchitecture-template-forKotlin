@@ -23,4 +23,11 @@ class ${activityName} : AppCompatActivity() {
         (application as MainApplication).rootComponent
         .new${componentName}(${moduleName}(fragment as ${contractName}.View)).inject(fragment)
     }
+
+    companion object {
+        fun launch(context: Context) {
+            val intent = Intent(context, ${activityName}::class.java)
+            context.startActivity(intent)
+        }
+    }
 }
