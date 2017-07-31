@@ -1,17 +1,17 @@
 package ${packageName}
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.${fragmentLayoutName}.*
 import javax.inject.Inject
 <#if applicationPackage??>
 import ${applicationPackage}.R
 </#if>
 
-class ${fragmentName} : Fragment(), ${contractName}.View {
+class ${fragmentName} : DaggerFragment(), ${contractName}.View {
 
     @Inject lateinit var presenter:${presenterName}
 

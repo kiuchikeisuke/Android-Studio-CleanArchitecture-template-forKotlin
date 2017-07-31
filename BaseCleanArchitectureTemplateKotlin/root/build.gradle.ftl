@@ -1,8 +1,8 @@
 <#if includeRealm>
-apply plugin: 'realm-android'
+apply plugin : 'realm-android'
 </#if>
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin : 'kotlin-kapt'
+apply plugin : 'kotlin-android-extensions'
 
 android {
   sourceSets {
@@ -22,5 +22,6 @@ android {
 dependencies {
 <#compress>
   kapt 'com.google.dagger:dagger-compiler:2.+'
+  kapt 'com.google.dagger:dagger-android-processor:2.+'
 </#compress>
 }

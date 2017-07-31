@@ -1,4 +1,5 @@
 package ${packageName}.utils.commons
+import io.reactivex.Observable
 
 abstract class SimpleUseCase(executionThreads: ExecutionThreads) : IoUseCase<UseCase.NoRequestValue, UseCase.NoResponseValue>(executionThreads) {
     protected abstract fun execute(): Observable<NoResponseValue>

@@ -15,16 +15,13 @@ import io.realm.RealmConfiguration
 
 /* Module for Application */
 @Module
-class ApplicationModule(val context: Context) {
-    val sharedPreference: SharedPreferences
-        get() = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
+class ApplicationModule {
+    @Provides fun provideContext(application: MainApplication): Context = application
+    @Provides fun provideSharedPreference(application: MainApplication): SharedPreferences = application.getSharedPreferences(application.getString(R.string.app_name), Context.MODE_PRIVATE)
 
     @Provides
-    fun provideContext(): Context = context
-
-    @Provides
-    fun provideRealm(): Realm {
-        val builder = RealmConfiguration.Builder().name(context.getString(R.string.app_name))
+    fun provideRealm(application: MainApplication): Realm {
+        val builder = RealmConfiguration.Builder().name(application.getString(R.string.app_name))
         if (BuildConfig.DEBUG) {
             return Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
         } else {
@@ -40,7 +37,5 @@ class ApplicationModule(val context: Context) {
         }
     }
 
-    @Provides
-    fun provideSharedPreference(): SharedPreferences = sharedPreference
 
 }

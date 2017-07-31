@@ -1,9 +1,10 @@
 package ${packageName}
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class ${moduleName}(val view: ${contractName}.View) {
-    @Provides fun provideView(): ${contractName}.View = view
+abstract class ${moduleName} {
+    @Binds abstract fun bindView(receiver: ${receiverName}): ${contractName}.View
+    @Binds abstract fun bindPresenter(presenter: ${presenterName}): ${contractName}.Presenter
 }

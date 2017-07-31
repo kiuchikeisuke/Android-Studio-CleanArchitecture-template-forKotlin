@@ -1,19 +1,10 @@
 package com.example.example
 
-import android.app.Application
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class MainApplication : Application() {
-
-    lateinit var rootComponent: RootComponent
-
-    override fun onCreate() {
-        super.onCreate()
-        init()
-    }
-
-    private fun init() {
-        rootComponent = DaggerRootComponent.builder()
-                .applicationModule(ApplicationModule(this))
-                .build()
+class MainApplication : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerRootComponent.builder().create(this)
     }
 }

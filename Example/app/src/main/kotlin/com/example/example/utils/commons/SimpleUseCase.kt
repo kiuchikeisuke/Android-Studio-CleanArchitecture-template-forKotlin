@@ -1,3 +1,8 @@
 package com.example.example.utils.commons
 
-abstract class SimpleUseCase(executionThreads: ExecutionThreads) : IoUseCase<UseCase.NoRequestValue, UseCase.NoResponseValue>(executionThreads)
+import io.reactivex.Observable
+
+abstract class SimpleUseCase(executionThreads: ExecutionThreads) : IoUseCase<UseCase.NoRequestValue, UseCase.NoResponseValue>(executionThreads) {
+    protected abstract fun execute(): Observable<NoResponseValue>
+    override fun execute(requestValue: NoRequestValue): Observable<NoResponseValue> = execute()
+}

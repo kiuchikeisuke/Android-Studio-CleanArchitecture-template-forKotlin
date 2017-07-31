@@ -33,9 +33,13 @@ com.company.app
     |     |     - UseCase
     |     |
     |     +--- exceptions
+    |     |
+    |     +--- extensions
+    |           - Observable
     |
     | - ApiModules
     | - ApplicationModule
+    | - BindingModules
     | - MainApplication
     | - RootComponent
 
@@ -160,10 +164,10 @@ This template will add DataSourceClass and DataRepositoryClass.
 And then, please see DataSourceClass.The following notice is written there.
 ```
 /*    FIXME MUST add below method to RepositoryModules */
-//    @Provides fun provideMainDataSource(repository: MainRepository): MainDataSource = repository
+//    @Binds abstract fun bindSomeDataSource(repository: SomeRepository):SomeDataSource
 ```
 
-So, Copy `@Provides fun provideMainDataSource(repository: MainRepository): MainDataSource = repository` to `RepositoryModules`
+So, Copy `@Binds abstract fun bindSomeDataSource(repository: SomeRepository):SomeDataSource` to `RepositoryModules`
 
 
 This Layer Provide Interface to domain.
@@ -184,18 +188,19 @@ This template create presenter-layer template.
 
 This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass, ActivityClass, FragmentClass and fragment.xml.
 
-And then, please see ActivityClass. The following notice is written there.
+And then, please see ComponentClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to RootComponent */
-// fun newSomeComponent(module: SomeModule): SomeComponent
+/* FIXME 1st:MUST add below method to BindingModules */
+// @Binds @IntoMap @FragmentKey(SomeFragment::class) abstract fun bindSomeFragment(builder: SomeComponent.Builder): AndroidInjector.Factory<out Fragment>
 
-/* FIXME 2nd:initialize SomeComponent like this */
-(application as MainApplication).rootComponent
-        .newSomeComponent(SomeModule(fragment as SomeContract.View))
-        .inject(fragment)
+/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
+//@Module(subcomponents = arrayOf(
+//    SomeComponent::class,
+//))
+//abstract class BindingModules {
 ```
 
-So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
+So, Copy `@Binds @IntoMap @FragmentKey(SomeFragment::class) abstract fun bindSomeFragment(builder: SomeComponent.Builder): AndroidInjector.Factory<out Fragment>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
 
 This Layer Provides UserInterface(Activity & Fragment).
 And presenterClass communicate domain-layer.
@@ -206,17 +211,19 @@ This template create presenter-layer template.
 
 This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ServiceClass.
 
-And then, please see ServiceClass. The following notice is written there.
+And then, please see ComponentClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to RootComponent */
-// fun newMainComponent(module: MainModule): MainComponent
+/* FIXME 1st:MUST add below method to BindingModules */
+//  @Binds @IntoMap @ServiceKey(SomeService::class) abstract fun bindSomeService(builder: SomeComponent.Builder): AndroidInjector.Factory<out Service>
 
-/* FIXME 2nd:initialize MainComponent like this */
-(application as MainApplication).rootComponent
-        .newMainComponent(MainModule(this)).inject(this)
+/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
+//  @Module(subcomponents = arrayOf(
+//      SomeComponent::class,
+//  ))
+//  abstract class BindingModules {
 ```
 
-So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
+So, Copy `@Binds @IntoMap @ServiceKey(SomeService::class) abstract fun bindSomeService(builder: SomeComponent.Builder): AndroidInjector.Factory<out Service>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
 
 This Layer Provides UserInterface(Service).
 And presenterClass communicate domain-layer.
@@ -227,17 +234,21 @@ This template create presenter-layer template.
 
 This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ReceiverClass.
 
-And then, please see ReceiverClass. The following notice is written there.
+And then, please see ComponentClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to RootComponent */
-// fun newMainComponent(module: MainModule): MainComponent
+/* FIXME 1st:MUST add below method to BindingModules */
+//  @Binds @IntoMap @BroadcastReceiverKey(SomeReceiver::class) abstract fun bindSomeReceiver(builder: SomeComponent.Builder): AndroidInjector.Factory<out BroadcastReceiver>
 
-/* FIXME 2nd:initialize MainComponent like this */
-(context!!.applicationContext as MainApplication).rootComponent
-        .newMainComponent(MainModule(this)).inject(this)
+/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
+//  @Module(subcomponents = arrayOf(
+//      SomeComponent::class,
+//  ))
+//  abstract class BindingModules {
+
 ```
 
-So, Copy `fun newMainComponent(module: MainModule): MainComponent` to `RootComponent`
+So, Copy `@Binds @IntoMap @BroadcastReceiverKey(SomeReceiver::class) abstract fun bindSomeReceiver(builder: SomeComponent.Builder): AndroidInjector.Factory<out BroadcastReceiver>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
+
 
 This Layer Provides UserInterface(BroadCastReceiver).
 And presenterClass communicate domain-layer.

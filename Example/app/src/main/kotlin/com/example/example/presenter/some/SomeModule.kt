@@ -1,9 +1,10 @@
 package com.example.example.presenter.some
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class SomeModule(val view: SomeContract.View) {
-    @Provides fun provideView(): SomeContract.View = view
+abstract class SomeModule {
+    @Binds abstract fun bindView(fragment: SomeFragment): SomeContract.View
+    @Binds abstract fun bindPresenter(presenter: SomePresenter): SomeContract.Presenter
 }

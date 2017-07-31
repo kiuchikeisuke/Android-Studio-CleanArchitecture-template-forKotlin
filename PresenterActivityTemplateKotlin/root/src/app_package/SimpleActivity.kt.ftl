@@ -18,17 +18,12 @@ class ${activityName} : AppCompatActivity() {
             fragment = ${fragmentName}.newInstance()
             supportFragmentManager.beginTransaction().add(R.id.base_fragment, fragment).commit()
         }
-        /* FIXME 1st:MUST add below method to RootComponent */
-        // fun new${componentName}(module: ${moduleName}): ${componentName}
-
-        /* FIXME 2nd:initialize ${componentName} like this */
-        (application as MainApplication).rootComponent
-        .new${componentName}(${moduleName}(fragment as ${contractName}.View)).inject(fragment)
     }
 
     companion object {
-        fun launch(context: Context) {
+        fun launch(context: Context, flags:Int = Intent.FLAG_ACTIVITY_NEW_TASK) {
             val intent = Intent(context, ${activityName}::class.java)
+            intent.flags = flags
             context.startActivity(intent)
         }
     }

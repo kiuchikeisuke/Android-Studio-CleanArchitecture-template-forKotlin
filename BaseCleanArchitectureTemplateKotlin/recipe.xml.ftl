@@ -24,6 +24,8 @@
     <merge from="root/top_build.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/build.gradle" />
     <dependency mavenUrl="com.google.dagger:dagger:2.+" />
+    <dependency mavenUrl="com.google.dagger:dagger-android:2.+" />
+    <dependency mavenUrl="com.google.dagger:dagger-android-support:2.+" />
     <dependency mavenUrl="com.jakewharton:kotterknife:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxjava:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:+" />
@@ -50,6 +52,8 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/ApiModules.kt" />
     <instantiate from="root/src/app_package/ApplicationModule.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/ApplicationModule.kt" />
+    <instantiate from="root/src/app_package/BindingModules.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/BindingModules.kt" />
     <instantiate from="root/src/app_package/BasePresenter.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BasePresenter.kt" />
     <instantiate from="root/src/app_package/BaseView.kt.ftl"

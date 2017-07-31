@@ -1,8 +1,18 @@
 package com.example.example.presenter.some
 
 import dagger.Subcomponent
+import dagger.android.AndroidInjector
 
 @Subcomponent(modules = arrayOf(SomeModule::class))
-interface SomeComponent {
-    fun inject(fragment: SomeFragment)
+interface SomeComponent : AndroidInjector<SomeFragment> {
+    @Subcomponent.Builder abstract class Builder : AndroidInjector.Builder<SomeFragment>()
+
+    /* FIXME 1st:MUST add below method to BindingModules */
+    // @Binds @IntoMap @FragmentKey(SomeFragment::class) abstract fun bindSomeFragment(builder: SomeComponent.Builder): AndroidInjector.Factory<out Fragment>
+
+    /* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
+    //@Module(subcomponents = arrayOf(
+    //    SomeComponent::class,
+    //))
+    //abstract class BindingModules {
 }

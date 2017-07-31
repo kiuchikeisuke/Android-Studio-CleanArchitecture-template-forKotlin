@@ -4,7 +4,7 @@ import dagger.Module
 
 /* module for Repositories */
 @Module
-class RepositoryModules {
+abstract class RepositoryModules {
     /*if you add a new datasource & repository, add a new provideMethod. Like this */
-    //@Provides fun provideSomeDataSource(someRepository: SomeRepository): SomeDataSource = someRepository
+//  @Binds abstract fun bindSomeDataSource(repository: SomeRepository): SomeDataSource
 }

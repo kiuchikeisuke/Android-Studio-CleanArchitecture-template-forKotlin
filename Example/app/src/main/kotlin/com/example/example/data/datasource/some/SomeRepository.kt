@@ -1,7 +1,7 @@
 package com.example.example.data.datasource.some
 
-import com.example.example.data.entity.SomeDataEntity
 import io.reactivex.Observable
+import com.example.example.data.entity.SomeDataEntity
 import javax.inject.Inject
 
 class SomeRepository @Inject constructor() : SomeDataSource {
@@ -15,5 +15,4 @@ class SomeRepository @Inject constructor() : SomeDataSource {
             e.onComplete()
         }
     }
-
 }
