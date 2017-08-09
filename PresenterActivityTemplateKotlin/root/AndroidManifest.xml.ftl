@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" >
     <application>
-        <activity android:name="${packageName}.${activityName}" />
+        <activity android:name="${packageName}.${activityName}"/>
     </application>
 
 </manifest>
