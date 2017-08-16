@@ -30,11 +30,12 @@
     <dependency mavenUrl="io.reactivex.rxjava2:rxjava:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
-
+    <dependency mavenUrl="com.jakewharton.threetenabp:threetenabp:+" />
 
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-gson:+" />
+      <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
       <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:+" />
       <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:+" />
     </#if>
