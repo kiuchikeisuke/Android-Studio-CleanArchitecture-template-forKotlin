@@ -8,22 +8,20 @@ import io.reactivex.observers.DisposableObserver
 
 
 
-abstract class IoUseCase <in Q: UseCase.RequestValue, R: UseCase.ResponseValue>(executionThreads: ExecutionThreads) : UseCase<Q, R>() {
-    protected val mSubscribeOn: Scheduler = executionThreads.io()
-    protected val mObserveOn: Scheduler = executionThreads.ui()
-    protected val mDisposable: CompositeDisposable = CompositeDisposable()
+abstract class IoUseCase <in Q: UseCase.RequestValue, R: UseCase.ResponseValue>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
+    protected val disposable: CompositeDisposable = CompositeDisposable()
 
     fun execute(requestValues: Q, observer: DisposableObserver<R>) {
-        mDisposable.clear()
+        disposable.clear()
         val observable = execute(requestValues)
-                .subscribeOn(mSubscribeOn)
-                .observeOn(mObserveOn)
+                .subscribeOn(executionThreads.io())
+                .observeOn(executionThreads.ui())
         addDisposable(observable.subscribeWith(observer))
     }
 
     fun dispose() {
-        if (mDisposable.isDisposed) {
-            mDisposable.dispose()
+        if (disposable.isDisposed) {
+            disposable.dispose()
         }
     }
 
@@ -32,7 +30,7 @@ abstract class IoUseCase <in Q: UseCase.RequestValue, R: UseCase.ResponseValue>(
      */
     private fun addDisposable(disposable: Disposable) {
         Preconditions.checkNotNull(disposable)
-        Preconditions.checkNotNull(mDisposable)
-        mDisposable.add(disposable)
+        Preconditions.checkNotNull(this.disposable)
+        this.disposable.add(disposable)
     }
 }
