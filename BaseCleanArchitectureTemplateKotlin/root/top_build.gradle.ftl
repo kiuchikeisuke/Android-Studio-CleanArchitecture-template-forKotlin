@@ -11,7 +11,11 @@ buildscript {
 allprojects {
     repositories {
         maven {
+            url 'https://maven.google.com'
+        }
+        maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
+
     }
 }
