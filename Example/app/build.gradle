@@ -6,7 +6,7 @@
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '27.0.1'
     defaultConfig {
         applicationId "com.example.example"
         minSdkVersion 21
@@ -38,7 +38,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'com.android.support:appcompat-v7:26.0.2'
     implementation 'com.google.dagger:dagger:2.+'
     implementation 'com.google.dagger:dagger-android:2.+'
     implementation 'com.google.dagger:dagger-android-support:2.+'

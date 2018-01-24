@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import butterknife.bindView
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_some.*
 import javax.inject.Inject
 import com.example.example.R
 import com.example.example.data.entity.SomeDataEntity
+import kotterknife.bindView
 
 class SomeFragment : DaggerFragment(), SomeContract.View {
 
