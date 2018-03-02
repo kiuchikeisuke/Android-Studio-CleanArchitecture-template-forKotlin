@@ -2,8 +2,6 @@
 buildscript {
   dependencies {
     classpath "io.realm:realm-gradle-plugin:+"
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
   }
 }
 </#if>
@@ -11,11 +9,7 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url 'https://maven.google.com'
-        }
-        maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
-
     }
 }
