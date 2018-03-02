@@ -32,6 +32,7 @@
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
     <dependency mavenUrl="com.jakewharton.threetenabp:threetenabp:+" />
     <dependency mavenUrl="com.android.support.constraint:constraint-layout:+" />
+    <dependency mavenUrl="androidx.core:core-ktx:+" />
 
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />

@@ -65,6 +65,7 @@ You must satisfy the following conditions.
 - [ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
 - [Retrofit2](http://square.github.io/retrofit/)
 - [Swagger](https://swagger.io/)
+- [android-ktx](https://github.com/android/android-ktx)
 
 ## Installation
 
