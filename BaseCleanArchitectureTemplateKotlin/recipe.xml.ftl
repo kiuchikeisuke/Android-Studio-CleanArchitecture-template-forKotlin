@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<#import "root://activities/common/kotlin_macros.ftl" as kt>
 <recipe>
     <#-- init dirs -->
     <#if createKotlinDir>
@@ -19,6 +20,7 @@
 
 
     <#-- init build.gradle -->
+    <@kt.addAllKotlinDependencies />
     <merge from="root/build.gradle.ftl"
              to="${escapeXmlAttribute(projectOut)}/build.gradle" />
     <#if includeRealm>
