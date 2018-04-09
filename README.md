@@ -55,17 +55,16 @@ You must satisfy the following conditions.
 - [Dagger2](https://google.github.io/dagger/) for dependency injection
 - [RxJava2](https://github.com/ReactiveX/RxJava) for Asynchronous processing.
 - [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html) (Default Support)
-- [KotterKnife](https://github.com/JakeWharton/kotterknife) for View Initialization (**Non-essential**)
 
 # Support Main Libraries, Service, Layout,
 - [Dagger2](https://google.github.io/dagger/)
 - [RxJava2](https://github.com/ReactiveX/RxJava)
-- [KotterKnife](https://github.com/JakeWharton/kotterknife)
 - [Realm](https://realm.io/)
 - [ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
 - [Retrofit2](http://square.github.io/retrofit/)
 - [Swagger](https://swagger.io/)
 - [android-ktx](https://github.com/android/android-ktx)
+- [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 
 ## Installation
 
