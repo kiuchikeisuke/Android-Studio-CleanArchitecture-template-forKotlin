@@ -5,11 +5,3 @@ buildscript {
   }
 }
 </#if>
-
-allprojects {
-    repositories {
-        maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-    }
-}

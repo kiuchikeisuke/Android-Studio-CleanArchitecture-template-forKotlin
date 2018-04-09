@@ -21,12 +21,13 @@
     <#-- init build.gradle -->
     <merge from="root/build.gradle.ftl"
              to="${escapeXmlAttribute(projectOut)}/build.gradle" />
+    <#if includeRealm>
     <merge from="root/top_build.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/build.gradle" />
+    </#if>
     <dependency mavenUrl="com.google.dagger:dagger:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android-support:2.+" />
-    <dependency mavenUrl="com.jakewharton:kotterknife:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxjava:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:+" />
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
