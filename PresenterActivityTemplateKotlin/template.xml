@@ -80,7 +80,15 @@
         suggest="${activityToLayout(activityName, 'fragment')}"
         default="fragment_main"
         help="The name of the layout to create for the activity's content fragment"/>
-
+    <parameter
+      id="bindingName"
+      name="Binding Class Name"
+      type="string"
+      constraints="class|unique|nonempty"
+      suggest="${underscoreToCamelCase(fragmentLayoutName)}Binding"
+      default="FragmentMainBinding"
+      visibility="false"
+      />
     <parameter
         id="packageName"
         name="Package name"

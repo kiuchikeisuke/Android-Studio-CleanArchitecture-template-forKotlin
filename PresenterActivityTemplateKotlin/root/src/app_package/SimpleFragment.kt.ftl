@@ -9,15 +9,17 @@ import kotlinx.android.synthetic.main.${fragmentLayoutName}.*
 import javax.inject.Inject
 <#if applicationPackage??>
 import ${applicationPackage}.R
+import ${applicationPackage}.databinding.${bindingName}
 </#if>
 
 class ${fragmentName} : DaggerFragment(), ${contractName}.View {
 
     @Inject lateinit var presenter:${presenterName}
+    private lateinit var binding: ${bindingName}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.${fragmentLayoutName}, container, false)
-        return view
+        binding = ${bindingName}.inflate(inflater, container!!, false)
+        return binding.root
     }
 
     override fun onDestroy() {
