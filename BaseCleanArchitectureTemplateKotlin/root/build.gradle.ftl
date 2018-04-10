@@ -2,7 +2,6 @@
 apply plugin : 'realm-android'
 </#if>
 apply plugin : 'kotlin-kapt'
-apply plugin : 'kotlin-android-extensions'
 
 android {
   sourceSets {
