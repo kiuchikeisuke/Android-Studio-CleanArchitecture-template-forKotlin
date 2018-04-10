@@ -11,12 +11,12 @@ import io.reactivex.observers.DisposableObserver
 abstract class IoUseCase <in Q: UseCase.RequestValue, R: UseCase.ResponseValue>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
     protected val disposable: CompositeDisposable = CompositeDisposable()
 
-    fun execute(requestValues: Q, observer: DisposableObserver<R>) {
+    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (Throwable) -> Unit = {}, complete: () -> Unit = {}) {
         disposable.clear()
         val observable = execute(requestValues)
                 .subscribeOn(executionThreads.io())
                 .observeOn(executionThreads.ui())
-        addDisposable(observable.subscribeWith(observer))
+        addDisposable(observable.subscribe(next, error, complete))
     }
 
     fun dispose() {

@@ -64,8 +64,6 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BasePresenter.kt" />
     <instantiate from="root/src/app_package/BaseView.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BaseView.kt" />
-    <instantiate from="root/src/app_package/DefaultDisposableObserver.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/DefaultDisposableObserver.kt" />
     <instantiate from="root/src/app_package/ExecutionThreads.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/ExecutionThreads.kt" />
     <instantiate from="root/src/app_package/IoUseCase.kt.ftl"
