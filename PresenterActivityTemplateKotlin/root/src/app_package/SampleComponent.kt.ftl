@@ -2,7 +2,9 @@ package ${packageName}
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
+import ${applicationPackage}.utils.commons.ActivityScope
 
+@ActivityScope
 @Subcomponent(modules = arrayOf(${moduleName}::class))
 interface ${componentName}:AndroidInjector<${fragmentName}> {
     @Subcomponent.Builder abstract class Builder: AndroidInjector.Builder<${fragmentName}>()

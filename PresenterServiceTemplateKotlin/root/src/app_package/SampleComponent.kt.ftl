@@ -2,8 +2,9 @@ package ${packageName}
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
+import ${applicationPackage}.utils.commons.ActivityScope
 
-//TODO add some child scope
+@ActivityScope
 @Subcomponent(modules = arrayOf(${moduleName}::class))
 interface ${componentName}:AndroidInjector<${serviceName}> {
     @Subcomponent.Builder abstract class Builder: AndroidInjector.Builder<${serviceName}>()
