@@ -1,7 +1,9 @@
+<#compress>
 <#if includeRealm>
-apply plugin : 'realm-android'
+apply plugin: 'realm-android'
 </#if>
-apply plugin : 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
+</#compress>
 
 android {
   sourceSets {

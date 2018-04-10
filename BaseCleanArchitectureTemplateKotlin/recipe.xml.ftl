@@ -21,12 +21,12 @@
 
     <#-- init build.gradle -->
     <@kt.addAllKotlinDependencies />
-    <merge from="root/build.gradle.ftl"
-             to="${escapeXmlAttribute(projectOut)}/build.gradle" />
-    <#if includeRealm>
     <merge from="root/top_build.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/build.gradle" />
-    </#if>
+    <instantiate from="root/versions.gradle.ftl"
+             to="${escapeXmlAttribute(topOut)}/versions.gradle" />
+    <merge from="root/build.gradle.ftl"
+             to="${escapeXmlAttribute(projectOut)}/build.gradle" />
     <dependency mavenUrl="com.google.dagger:dagger:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android-support:2.+" />
