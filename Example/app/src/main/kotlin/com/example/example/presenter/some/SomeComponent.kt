@@ -1,8 +1,10 @@
 package com.example.example.presenter.some
 
+import com.example.example.utils.commons.ActivityScope
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
 
+@ActivityScope
 @Subcomponent(modules = arrayOf(SomeModule::class))
 interface SomeComponent : AndroidInjector<SomeFragment> {
     @Subcomponent.Builder abstract class Builder : AndroidInjector.Builder<SomeFragment>()

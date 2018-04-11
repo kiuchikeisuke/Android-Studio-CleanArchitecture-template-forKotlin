@@ -1,28 +1,23 @@
 package com.example.example.utils.commons
 
 import dagger.internal.Preconditions
-import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
 
 
-abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue>(executionThreads: ExecutionThreads) : UseCase<Q, R>() {
-    protected val mSubscribeOn: Scheduler = executionThreads.io()
-    protected val mObserveOn: Scheduler = executionThreads.ui()
-    protected val mDisposable: CompositeDisposable = CompositeDisposable()
+abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
+    protected val disposable: CompositeDisposable = CompositeDisposable()
 
-    fun execute(requestValues: Q, observer: DisposableObserver<R>) {
-        mDisposable.clear()
+    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (Throwable) -> Unit = {}, complete: () -> Unit = {}) {
         val observable = execute(requestValues)
-                .subscribeOn(mSubscribeOn)
-                .observeOn(mObserveOn)
-        addDisposable(observable.subscribeWith(observer))
+                .subscribeOn(executionThreads.io())
+                .observeOn(executionThreads.ui())
+        addDisposable(observable.subscribe(next, error, complete))
     }
 
     fun dispose() {
-        if (mDisposable.isDisposed) {
-            mDisposable.dispose()
+        if (disposable.isDisposed) {
+            disposable.dispose()
         }
     }
 
@@ -31,7 +26,7 @@ abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue>
      */
     private fun addDisposable(disposable: Disposable) {
         Preconditions.checkNotNull(disposable)
-        Preconditions.checkNotNull(mDisposable)
-        mDisposable.add(disposable)
+        Preconditions.checkNotNull(this.disposable)
+        this.disposable.add(disposable)
     }
 }
