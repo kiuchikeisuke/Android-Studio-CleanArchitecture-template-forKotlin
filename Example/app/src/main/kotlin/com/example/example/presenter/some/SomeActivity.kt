@@ -3,10 +3,11 @@ package com.example.example.presenter.some
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.example.example.R
+import dagger.android.support.DaggerAppCompatActivity
 
-class SomeActivity : AppCompatActivity() {
+class SomeActivity : DaggerAppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_activity)

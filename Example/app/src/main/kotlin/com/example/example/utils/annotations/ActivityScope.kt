@@ -1,3 +1,3 @@
-package com.example.example.utils.commons
+package com.example.example.utils.annotations
 
 annotation class ActivityScope

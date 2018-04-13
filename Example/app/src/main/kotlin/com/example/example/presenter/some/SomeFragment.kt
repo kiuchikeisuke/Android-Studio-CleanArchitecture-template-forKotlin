@@ -1,18 +1,24 @@
 package com.example.example.presenter.some
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.example.data.entity.SomeDataEntity
 import com.example.example.databinding.FragmentSomeBinding
-import dagger.android.support.DaggerFragment
+import com.example.example.utils.di.Injectable
 import kotlinx.android.synthetic.main.fragment_some.*
 import javax.inject.Inject
 
-class SomeFragment : DaggerFragment(), SomeContract.View {
+class SomeFragment : Fragment(), SomeContract.View, Injectable {
 
-    @Inject lateinit var presenter: SomePresenter
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val presenter: SomePresenterViewModel by lazy {
+        // If share ViewModel with other fragments on same Activity, fix 'this' -> 'activity!!'
+        ViewModelProviders.of(this, viewModelFactory).get(SomePresenterViewModel::class.java)
+    }
     private lateinit var binding: FragmentSomeBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -20,20 +26,10 @@ class SomeFragment : DaggerFragment(), SomeContract.View {
         return binding.root
     }
 
-    override fun loaded(someDataEntity: SomeDataEntity) {
-        binding.data = someDataEntity //dataBinding
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.input0Button.setOnClickListener { presenter.load(0)} //DataBinding
-        input_1_button.setOnClickListener { presenter.load(1) } //Kotlin Android Extensions
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.dispose()
+        binding.input0Button.setOnClickListener { presenter.load(0, {binding.data = it.someDataEntity})} //DataBinding
+        input_1_button.setOnClickListener { presenter.load(1, {binding.data = it.someDataEntity}) } //Kotlin Android Extensions
     }
 
     companion object {

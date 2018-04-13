@@ -48,6 +48,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:+'
     implementation 'io.reactivex.rxjava2:rxandroid:+'
     implementation 'com.jakewharton.threetenabp:threetenabp:+'
+    implementation 'android.arch.lifecycle:extensions:+'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'androidx.core:core-ktx:0.3'
     implementation 'com.jakewharton.timber:timber:+'

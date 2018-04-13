@@ -1,9 +1,10 @@
-package com.example.example
-
-import com.example.example.utils.commons.ExecutionThreads
+package com.example.example.utils.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.example.MainApplication
+import com.example.example.R
+import com.example.example.utils.commons.ExecutionThreads
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -36,6 +37,4 @@ class ApplicationModule {
             override fun io(): Scheduler = Schedulers.io()
         }
     }
-
-
 }

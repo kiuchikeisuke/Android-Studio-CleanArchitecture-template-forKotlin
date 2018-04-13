@@ -1,4 +1,4 @@
-package com.example.example.utils.commons
+package com.example.example.utils.extensions
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
