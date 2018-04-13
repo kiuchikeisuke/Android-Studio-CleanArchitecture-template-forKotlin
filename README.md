@@ -3,7 +3,7 @@ This is an Android-Studio Template for CleanArchitecture Template & **Kotlin**
 
 This repository is made with reference to  [Android-Studio-MVP-template](https://github.com/benoitletondor/Android-Studio-MVP-template). So, the repository configuration is similar.
 
-It is inspired [Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture)
+It is inspired [Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture) and [android-architecture-component](https://github.com/googlesamples/android-architecture-components)
 
 Here's the hierarchy it follows:
 ```
@@ -11,7 +11,6 @@ com.company.app
     +--- data
     |     - datasource
     |     - entity
-    |     - RepositoryModules
     |
     +--- domain
     |
@@ -20,6 +19,7 @@ com.company.app
     +--- utils
     |     +--- annotations
     |     |     - ActivityScope
+    |     |     - ViewModelKey
     |     |
     |     +--- commons
     |     |     - BasePresenter
@@ -31,17 +31,21 @@ com.company.app
     |     |     - OutputOnlyUseCase
     |     |     - SimpleUseCase
     |     |     - UseCase
+    |     +--- di
+    |     |     - ApiModules
+    |     |     - ApplicationModule
+    |     |     - BindingModules
+    |     |     - Injectable
+    |     |     - RepositoryModules
+    |     |     - RootComponent
+    |     |     - ViewModelFactory
     |     |
     |     +--- exceptions
     |     |
     |     +--- extensions
     |           - Observable
     |
-    | - ApiModules
-    | - ApplicationModule
-    | - BindingModules
     | - MainApplication
-    | - RootComponent
 
 res
  +--- layout
@@ -51,7 +55,7 @@ res
 ## Prerequisites
 You must satisfy the following conditions.
 
-- [Kotlin](https://kotlinlang.org/)**(Recommended to use [Android-Studio 3.0](https://developer.android.com/studio/preview/index.html))**
+- [Kotlin](https://kotlinlang.org/)**(Recommended to use [Android-Studio 3.X](https://developer.android.com/studio/preview/index.html))**
 - [Dagger2](https://google.github.io/dagger/) for dependency injection
 - [RxJava2](https://github.com/ReactiveX/RxJava) for Asynchronous processing.
 - [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html) (Default Support)
@@ -65,6 +69,7 @@ You must satisfy the following conditions.
 - [Swagger](https://swagger.io/)
 - [android-ktx](https://github.com/android/android-ktx)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
+- [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
 
 ## Installation
 
@@ -194,21 +199,15 @@ This Layer Provide Bussiness Logic and connect DataLayer to PresentationLayer.
 This template create presenter-layer template.
 ![presenterActivityTemplate](static/presenterActivityTemplate.png)
 
-This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass, ActivityClass, FragmentClass and fragment.xml.
+This template will add ContractClass, ModuleClass, PresenterViewModelClass, ActivityClass, FragmentClass and fragment.xml.
 
-And then, please see ComponentClass. The following notice is written there.
+And then, please see ModuleClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to BindingModules */
-// @Binds @IntoMap @FragmentKey(SomeFragment::class) abstract fun bindSomeFragment(builder: SomeComponent.Builder): AndroidInjector.Factory<out Fragment>
-
-/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
-//@Module(subcomponents = arrayOf(
-//    SomeComponent::class,
-//))
-//abstract class BindingModules {
+/* FIXME MUST add below method to BindingModules */
+// @ContributesAndroidInjector(modules = [SomeModule::class]) @ActivityScope abstract fun contributeSomeActivityInjector(): SomeActivity
 ```
 
-So, Copy `@Binds @IntoMap @FragmentKey(SomeFragment::class) abstract fun bindSomeFragment(builder: SomeComponent.Builder): AndroidInjector.Factory<out Fragment>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
+So, Copy `@ContributesAndroidInjector(modules = [SomeModule::class]) @ActivityScope abstract fun contributeSomeActivityInjector(): SomeActivity` to `BindingModules`.
 
 This Layer Provides UserInterface(Activity & Fragment).
 And presenterClass communicate domain-layer.
@@ -217,21 +216,15 @@ And presenterClass communicate domain-layer.
 This template create presenter-layer template.
 ![presenterServiceTemplate](static/presenterServiceTemplate.png)
 
-This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ServiceClass.
+This template will add ContractClass, ModuleClass, PresenterClass and ServiceClass.
 
-And then, please see ComponentClass. The following notice is written there.
+And then, please see ModuleClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to BindingModules */
-//  @Binds @IntoMap @ServiceKey(SomeService::class) abstract fun bindSomeService(builder: SomeComponent.Builder): AndroidInjector.Factory<out Service>
-
-/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
-//  @Module(subcomponents = arrayOf(
-//      SomeComponent::class,
-//  ))
-//  abstract class BindingModules {
+/* FIXME MUST add below method to BindingModules */
+// @ContributesAndroidInjector(modules = [SomeServiceModule::class]) abstract fun contributeSomeServiceServiceInjector(): SomeServiceService
 ```
 
-So, Copy `@Binds @IntoMap @ServiceKey(SomeService::class) abstract fun bindSomeService(builder: SomeComponent.Builder): AndroidInjector.Factory<out Service>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
+So, Copy `@ContributesAndroidInjector(modules = [SomeServiceModule::class]) abstract fun contributeSomeServiceServiceInjector(): SomeServiceService` to `BindingModules`.
 
 This Layer Provides UserInterface(Service).
 And presenterClass communicate domain-layer.
@@ -240,22 +233,15 @@ And presenterClass communicate domain-layer.
 This template create presenter-layer template.
 ![presenterBroadCastReceiverTemplate](static/presenterBCRTemplate.png)
 
-This template will add ComponentClass, ContractClass, ModuleClass, PresenterClass and ReceiverClass.
+This template will add ContractClass, ModuleClass, PresenterClass and ReceiverClass.
 
-And then, please see ComponentClass. The following notice is written there.
+And then, please see ModuleClass. The following notice is written there.
 ```
-/* FIXME 1st:MUST add below method to BindingModules */
-//  @Binds @IntoMap @BroadcastReceiverKey(SomeReceiver::class) abstract fun bindSomeReceiver(builder: SomeComponent.Builder): AndroidInjector.Factory<out BroadcastReceiver>
-
-/* FIXME 2nd:MUST add below class to BindingModules's arrayOf() */
-//  @Module(subcomponents = arrayOf(
-//      SomeComponent::class,
-//  ))
-//  abstract class BindingModules {
-
+/* FIXME MUST add below method to BindingModules */
+// @ContributesAndroidInjector(modules = [SomeReceiverModule::class]) abstract fun contributeSomeReceiverReceiverInjector(): SomeReceiverReceiver
 ```
 
-So, Copy `@Binds @IntoMap @BroadcastReceiverKey(SomeReceiver::class) abstract fun bindSomeReceiver(builder: SomeComponent.Builder): AndroidInjector.Factory<out BroadcastReceiver>` to `BindingModules`, and copy `SomeComponent::class` to `BindingModules's arrayOf()`
+So, Copy `@ContributesAndroidInjector(modules = [SomeReceiverModule::class]) abstract fun contributeSomeReceiverReceiverInjector(): SomeReceiverReceiver` to `BindingModules`.
 
 
 This Layer Provides UserInterface(BroadCastReceiver).

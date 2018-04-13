@@ -1,8 +1,11 @@
 package ${packageName}
 
+import com.example.example.utils.di.DaggerRootComponent
+import com.example.example.utils.di.applyAutoInjector
+import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
-import com.jakewharton.threetenabp.AndroidThreeTen
+import timber.log.Timber
 
 class ${appClassName} : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
@@ -11,6 +14,10 @@ class ${appClassName} : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
         AndroidThreeTen.init(this);
+        applyAutoInjector()
     }
 }

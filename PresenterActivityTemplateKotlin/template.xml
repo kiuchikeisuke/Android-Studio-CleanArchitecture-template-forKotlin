@@ -19,15 +19,6 @@
         help="The name of the presenter tag to create" />
 
     <parameter
-        id="componentName"
-        name="Component Name"
-        type="string"
-        constraints="class|unique|nonempty"
-        suggest="${presenterTagName}Component"
-        default="MainComponent"
-        help="The name of the component interface name to create" />
-
-    <parameter
         id="contractName"
         name="Contract Name"
         type="string"
@@ -46,13 +37,13 @@
         help="The name of the Module class name to create" />
 
     <parameter
-        id="presenterName"
-        name="Presenter Name"
+        id="presenterViewModelName"
+        name="PresenterViewModel Name"
         type="string"
         constraints="class|unique|nonempty"
-        suggest="${presenterTagName}Presenter"
-        default="MainPresenter"
-        help="The name of the Presenter class name to create" />
+        suggest="${presenterTagName}PresenterViewModel"
+        default="MainPresenterViewModel"
+        help="The name of the PresenterViewModel class name to create" />
 
     <parameter
         id="activityName"

@@ -1,3 +1,3 @@
-package ${packageName}.utils.commons
+package ${packageName}.utils.annotations
 
 annotation class ActivityScope

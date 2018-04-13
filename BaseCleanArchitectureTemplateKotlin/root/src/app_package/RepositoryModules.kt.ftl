@@ -1,4 +1,4 @@
-package ${packageName}.data
+package ${packageName}.utils.di
 
 import dagger.Module
 

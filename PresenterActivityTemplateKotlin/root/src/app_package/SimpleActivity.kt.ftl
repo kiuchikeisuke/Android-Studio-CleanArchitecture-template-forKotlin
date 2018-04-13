@@ -3,12 +3,12 @@ package ${packageName}
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 <#if applicationPackage??>
 import ${applicationPackage}.R
 </#if>
+import dagger.android.support.DaggerAppCompatActivity
 
-class ${activityName} : AppCompatActivity() {
+class ${activityName} : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_activity)

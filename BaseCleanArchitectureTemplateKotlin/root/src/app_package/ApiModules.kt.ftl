@@ -1,4 +1,4 @@
-package ${packageName}
+package ${packageName}.utils.di
 
 import dagger.Module
 <#if includeRetrofit>

@@ -10,6 +10,6 @@ interface ${contractName} {
     }
 
     interface Presenter: BasePresenter {
-
+        fun dispose()
     }
 }

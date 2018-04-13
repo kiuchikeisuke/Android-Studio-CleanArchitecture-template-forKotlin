@@ -1,4 +1,4 @@
-package ${packageName}
+package ${packageName}.utils.di
 
 import ${packageName}.utils.commons.ExecutionThreads
 

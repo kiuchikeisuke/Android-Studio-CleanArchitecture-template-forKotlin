@@ -17,6 +17,7 @@
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/commons"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/exceptions"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions"/>
+    <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/di"/>
 
 
     <#-- init build.gradle -->
@@ -38,6 +39,7 @@
     <dependency mavenUrl="androidx.core:core-ktx:+" />
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" />
+    <dependency mavenUrl="android.arch.lifecycle:extensions:+" />
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-gson:+" />
@@ -55,12 +57,20 @@
     <#-- init base Classes -->
     <instantiate from="root/src/app_package/ActivityScope.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/ActivityScope.kt" />
+    <instantiate from="root/src/app_package/ViewModelKey.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/ViewModelKey.kt" />
     <instantiate from="root/src/app_package/ApiModules.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/ApiModules.kt" />
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/ApiModules.kt" />
     <instantiate from="root/src/app_package/ApplicationModule.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/ApplicationModule.kt" />
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/ApplicationModule.kt" />
     <instantiate from="root/src/app_package/BindingModules.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/BindingModules.kt" />
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/BindingModules.kt" />
+    <instantiate from="root/src/app_package/Injectable.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/INjectable.kt" />
+    <instantiate from="root/src/app_package/ViewModelFactory.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/ViewModelFactory.kt" />
+    <instantiate from="root/src/app_package/RootComponent.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/RootComponent.kt" />
     <instantiate from="root/src/app_package/BasePresenter.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BasePresenter.kt" />
     <instantiate from="root/src/app_package/BaseView.kt.ftl"
@@ -70,11 +80,9 @@
     <instantiate from="root/src/app_package/IoUseCase.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/IoUseCase.kt" />
     <instantiate from="root/src/app_package/RepositoryModules.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/data/RepositoryModules.kt" />
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/RepositoryModules.kt" />
     <instantiate from="root/src/app_package/RootApplication.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/${appClassName}.kt" />
-    <instantiate from="root/src/app_package/RootComponent.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/RootComponent.kt" />
     <instantiate from="root/src/app_package/InputOnlyUseCase.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/InputOnlyUseCase.kt" />
     <instantiate from="root/src/app_package/OutputOnlyUseCase.kt.ftl"

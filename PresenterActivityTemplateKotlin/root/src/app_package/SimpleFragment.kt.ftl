@@ -1,30 +1,33 @@
 package ${packageName}
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dagger.android.support.DaggerFragment
+import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main.${fragmentLayoutName}.*
 import javax.inject.Inject
 <#if applicationPackage??>
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.${bindingName}
+import ${applicationPackage}.utils.di.Injectable
 </#if>
 
-class ${fragmentName} : DaggerFragment(), ${contractName}.View {
+class ${fragmentName} : Fragment(), Injectable, ${contractName}.View {
 
-    @Inject lateinit var presenter:${presenterName}
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val presenterVM:${presenterViewModelName}  by lazy {
+        // If share ViewModel with other fragments on same Activity, fix 'this' -> 'activity!!'
+        ViewModelProviders.of(this, viewModelFactory).get(${presenterViewModelName}::class.java)
+    }
+
     private lateinit var binding: ${bindingName}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = ${bindingName}.inflate(inflater, container!!, false)
         return binding.root
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.dispose()
     }
 
     companion object {
