@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <service android:name=".presenter.somseservice.SomeServiceService"/>
+
+        <receiver android:name=".presenter.somereceiver.SomeReceiverReceiver"/>
+
+        <activity android:name=".presenter.some2.Some2Activity"/>
     </application>
 
 </manifest>
