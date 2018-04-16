@@ -2,6 +2,7 @@ package com.example.example.utils.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.example.BuildConfig
 import com.example.example.MainApplication
 import com.example.example.R
 import com.example.example.utils.commons.ExecutionThreads
@@ -10,7 +11,6 @@ import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.realm.BuildConfig
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -23,10 +23,10 @@ class ApplicationModule {
     @Provides
     fun provideRealm(application: MainApplication): Realm {
         val builder = RealmConfiguration.Builder().name(application.getString(R.string.app_name))
-        if (BuildConfig.DEBUG) {
-            return Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
+        return if (BuildConfig.DEBUG) {
+            Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
         } else {
-            return Realm.getInstance(builder.build())
+            Realm.getInstance(builder.build())
         }
     }
 

@@ -10,7 +10,6 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 <#if includeRealm>
-import io.realm.BuildConfig
 import io.realm.Realm
 import io.realm.RealmConfiguration
 </#if>
@@ -25,7 +24,7 @@ class ApplicationModule {
     @Provides
     fun provideRealm(application: ${appClassName}): Realm {
         val builder = RealmConfiguration.Builder().name(application.getString(R.string.app_name))
-        if (BuildConfig.DEBUG) {
+        return if (BuildConfig.DEBUG) {
             return Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
         } else {
             return Realm.getInstance(builder.build())
