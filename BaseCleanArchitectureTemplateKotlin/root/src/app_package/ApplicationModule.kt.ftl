@@ -25,9 +25,9 @@ class ApplicationModule {
     fun provideRealm(application: ${appClassName}): Realm {
         val builder = RealmConfiguration.Builder().name(application.getString(R.string.app_name))
         return if (BuildConfig.DEBUG) {
-            return Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
+            Realm.getInstance(builder.deleteRealmIfMigrationNeeded().build())
         } else {
-            return Realm.getInstance(builder.build())
+            Realm.getInstance(builder.build())
         }
     }
 
