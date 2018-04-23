@@ -1,10 +1,8 @@
 package ${packageName}.utils.di
 
+import android.arch.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
-import dagger.android.AndroidInjector
-import dagger.android.support.FragmentKey
-import dagger.multibindings.IntoMap
 
 /* bind modules for Presenter's modules */
 @Module
