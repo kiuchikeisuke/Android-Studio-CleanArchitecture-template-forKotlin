@@ -2,12 +2,15 @@ package ${packageName}.utils.di
 
 import dagger.Module
 <#if includeRetrofit>
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit.MoshiConverterFactory
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 </#if>
 
 /* module for API connection(e.g retrofit2, http3, etc..) */
@@ -20,10 +23,13 @@ class ApiModules {
         return OkHttpClient.Builder().addInterceptor(interceptor)
     }
 
-    private fun createRetrofitBuilder(endPoint: String):Retrofit.Builder =
+    private fun createRetrofitBuilder(endPoint: String): Retrofit.Builder =
             Retrofit.Builder()
                     .baseUrl(endPoint)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder()
+                            // Add any other JsonAdapter factories.
+                            .add(KotlinJsonAdapterFactory())
+                            .build()) as Converter.Factory)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
     @Provides fun provideRetrofitBuilder(): Retrofit.Builder {

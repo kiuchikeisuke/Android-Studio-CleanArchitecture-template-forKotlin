@@ -43,10 +43,12 @@
     <dependency mavenUrl="android.arch.lifecycle:extensions:+" />
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
-      <dependency mavenUrl="com.squareup.retrofit2:converter-gson:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
       <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:+" />
       <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:+" />
+      <dependency mavenUrl="com.squareup.retrofit:converter-moshi:+" />
+      <dependency mavenUrl="com.squareup.moshi:moshi:+" />
+      <dependency mavenUrl="com.squareup.moshi:moshi-kotlin:+" />
     </#if>
     <#-- init proguard -->
     <instantiate from="root/proguard/proguard-google-dagger2.pro.ftl"
@@ -66,6 +68,8 @@
                       to="${escapeXmlAttribute(projectOut)}/proguard/proguard-square-retrofit2.pro" />
         <instantiate from="root/proguard/proguard-okio.pro.ftl"
                       to="${escapeXmlAttribute(projectOut)}/proguard/proguard-okio.pro" />
+        <instantiate from="root/proguard/proguard-moshi.pro.ftl"
+                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-moshi.pro" />
     </#if>
 
 
