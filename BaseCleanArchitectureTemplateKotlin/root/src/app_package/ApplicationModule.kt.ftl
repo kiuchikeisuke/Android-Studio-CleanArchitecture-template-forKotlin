@@ -13,6 +13,9 @@ import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.RealmConfiguration
 </#if>
+import ${packageName}.${appClassName}
+import ${packageName}.R
+import ${packageName}.BuildConfig
 
 /* Module for Application */
 @Module

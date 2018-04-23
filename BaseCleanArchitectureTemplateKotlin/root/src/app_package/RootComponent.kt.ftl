@@ -1,9 +1,9 @@
 package ${packageName}.utils.di
 
-import ${packageName}.data.RepositoryModules
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+import ${packageName}.${appClassName}
 import javax.inject.Singleton
 
 @Singleton
