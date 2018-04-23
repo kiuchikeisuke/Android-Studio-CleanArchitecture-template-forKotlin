@@ -145,24 +145,61 @@ By the way, this error has already been discussed in [Stack Over Flow](https://s
 
 
 **Some time, app/build.gradle file will also be broken...(WANTED  Info)**.
-So, Please correct the file as follows.
-```
-- apply {
--     plugin: 'com.android.application'
--     plugin: 'realm-android'
-- }
--
-- apply {
--     plugin: 'kotlin-android'
--     plugin: 'kotlin-kapt'
--     apply plugin: 'kotlin-android-extensions'
-- }
+So, **Some settings are commented out**.
+for that reason, **MUST FIX these FIXME!!**
 
-+ apply plugin: 'com.android.application'
+*1st FIXME* Uncomment out
+```
+release {
+    minifyEnabled true
+    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    debuggable false
+    zipAlignEnabled true
+    shrinkResources true
+    //          FIXME comment out this!!
+    //          proguardFiles {
+    //              getDefaultProguardFile('proguard-android.txt')
+    //              "proguard-rules.pro"
+    //          }
+    //          def files = rootProject.file("proguard")
+    //                  .listFiles()
+    //                  .findAll { it.name.startsWith("proguard") }
+    //                  .toList()
+    //                  .toArray()
+    //          proguardFiles(files)
+}
+```
+*2nd FIXME* Uncomment out and move to Top this Code
+```
+........
+kapt 'com.google.dagger:dagger-compiler:2.+'
+kapt 'com.google.dagger:dagger-android-processor:2.+'
+}
+
+// FIXME comment out this!! and move to file top!!
+
+// apply plugin: 'realm-android'
+
+// FIXME comment out this!! and move to file top!!
+
+// apply plugin: 'kotlin-kapt'
+```
+
+Paste top of build.gradle
+
+```
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
 + apply plugin: 'realm-android'
-+ apply plugin: 'kotlin-android'
+
 + apply plugin: 'kotlin-kapt'
-+ apply plugin: 'kotlin-android-extensions'
+
+android {
+
 ```
 
 ### Use CleanArchitecture Template

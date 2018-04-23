@@ -7,6 +7,7 @@
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/main/kotlin"/>
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/kotlin"/>
     </#if>
+    <mkdir at="${escapeXmlAttribute(projectOut)}/proguard" />
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data/datasource"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data/entity"/>
@@ -47,11 +48,31 @@
       <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:+" />
       <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:+" />
     </#if>
+    <#-- init proguard -->
+    <instantiate from="root/proguard/proguard-google-dagger2.pro.ftl"
+                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-google-dagger2.pro" />
+    <instantiate from="root/proguard/proguard-rx-java.pro.ftl"
+                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-rx-java.pro" />
+    <instantiate from="root/proguard/proguard-rx-java2.pro.ftl"
+                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-rx-java2.pro" />
+    <instantiate from="root/proguard/proguard-support-design.pro.ftl"
+                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-support-design.pro" />
+    <instantiate from="root/proguard/proguard-support-v7-appcompat.pro.ftl"
+                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-support-v7-appcompat.pro" />
+    <#if includeRetrofit>
+        <instantiate from="root/proguard/proguard-okhttp3.pro.ftl"
+                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-okhttp3.pro" />
+        <instantiate from="root/proguard/proguard-square-retrofit2.pro.ftl"
+                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-square-retrofit2.pro" />
+        <instantiate from="root/proguard/proguard-okio.pro.ftl"
+                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-okio.pro" />
+    </#if>
 
 
     <#-- init AndroidManifest -->
     <merge from="root/AndroidManifest.xml.ftl"
                   to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
+
 
 
     <#-- init base Classes -->
@@ -99,6 +120,6 @@
     <#-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/base_activity.xml" />
-
+    <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />
 
 </recipe>

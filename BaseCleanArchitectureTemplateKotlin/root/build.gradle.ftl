@@ -1,8 +1,10 @@
 <#compress>
 <#if includeRealm>
-apply plugin: 'realm-android'
+// FIXME comment out this!! and move to file top!!
+// apply plugin: 'realm-android'
 </#if>
-apply plugin: 'kotlin-kapt'
+// FIXME comment out this!! and move to file top!!
+// apply plugin: 'kotlin-kapt'
 </#compress>
 
 android {
@@ -20,6 +22,30 @@ android {
   }
   dataBinding {
       enabled true
+  }
+  buildTypes {
+      debug {
+          signingConfig signingConfigs.debug
+          applicationIdSuffix '.debug'
+          versionNameSuffix "-debug"
+      }
+      release {
+          debuggable false
+          zipAlignEnabled true
+          minifyEnabled true
+          shrinkResources true
+//          FIXME comment out this!!
+//          proguardFiles {
+//              getDefaultProguardFile('proguard-android.txt')
+//              "proguard-rules.pro"
+//          }
+//          def files = rootProject.file("proguard")
+//                  .listFiles()
+//                  .findAll { it.name.startsWith("proguard") }
+//                  .toList()
+//                  .toArray()
+//          proguardFiles(files)
+      }
   }
 }
 
