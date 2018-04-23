@@ -39,7 +39,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.google.dagger:dagger:2.+'
     implementation 'com.google.dagger:dagger-android:2.+'
@@ -48,11 +48,18 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:+'
     implementation 'io.reactivex.rxjava2:rxandroid:+'
     implementation 'com.jakewharton.threetenabp:threetenabp:+'
-    implementation 'android.arch.lifecycle:extensions:+'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'androidx.core:core-ktx:0.3'
     implementation 'com.jakewharton.timber:timber:+'
     implementation 'com.squareup.leakcanary:leakcanary-android:+'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'com.squareup.retrofit2:retrofit:+'
+    implementation 'com.squareup.retrofit2:converter-scalars:+'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+    implementation 'com.squareup.okhttp3:logging-interceptor:+'
+    implementation 'com.squareup.moshi:moshi:+'
+    implementation 'com.squareup.retrofit:converter-moshi:+'
+    implementation 'com.squareup.moshi:moshi-kotlin:+'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
