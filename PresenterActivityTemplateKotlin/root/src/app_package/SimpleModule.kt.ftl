@@ -1,7 +1,7 @@
 package ${packageName}
 
 import android.arch.lifecycle.ViewModel
-import com.example.example.utils.annotations.ViewModelKey
+import ${applicationPackage}.utils.annotations.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
