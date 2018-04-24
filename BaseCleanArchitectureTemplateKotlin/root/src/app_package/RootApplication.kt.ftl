@@ -1,7 +1,7 @@
 package ${packageName}
 
-import com.example.example.utils.di.DaggerRootComponent
-import com.example.example.utils.di.applyAutoInjector
+import ${applicationPackage}.utils.di.DaggerRootComponent
+import ${applicationPackage}.utils.di.applyAutoInjector
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
