@@ -91,7 +91,7 @@
     <instantiate from="root/src/app_package/BindingModules.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/BindingModules.kt" />
     <instantiate from="root/src/app_package/Injectable.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/INjectable.kt" />
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/Injectable.kt" />
     <instantiate from="root/src/app_package/ViewModelFactory.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/ViewModelFactory.kt" />
     <instantiate from="root/src/app_package/RootComponent.kt.ftl"
@@ -116,6 +116,11 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/SimpleUseCase.kt" />
     <instantiate from="root/src/app_package/UseCase.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/UseCase.kt" />
+    <instantiate from="root/src/app_package/Activity.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Activity.kt" />
+    <instantiate from="root/src/app_package/Fragment.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Fragment.kt" />
+
     <#if includeRealm>
         <instantiate from="root/src/app_package/Observable.kt.ftl"
                       to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Observable.kt" />
