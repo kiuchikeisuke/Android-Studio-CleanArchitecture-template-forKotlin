@@ -11,8 +11,8 @@ import ${applicationPackage}.utils.commons.UseCase
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
     : IoUseCase<${useCaseName}.${useCaseName}Request, ${useCaseName}.${useCaseName}Response>(executionThreads) {
 
-    data class ${useCaseName}Request(/* add input data */): UseCase.RequestValue
-    data class ${useCaseName}Response(/* add output data */): UseCase.ResponseValue
+    data class Request(/* add input data */): UseCase.RequestValue
+    data class Response(/* add output data */): UseCase.ResponseValue
 }
 <#elseif !existInput && existOutput>
 <#if applicationPackage??>
@@ -23,7 +23,7 @@ import ${applicationPackage}.utils.commons.UseCase
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
     : OutputOnlyUseCase<${useCaseName}.${useCaseName}Response>(executionThreads) {
 
-    data class ${useCaseName}Response(/* add output data */): UseCase.ResponseValue
+    data class Response(/* add output data */): UseCase.ResponseValue
 }
 <#elseif existInput && !existOutput>
 <#if applicationPackage??>
@@ -34,7 +34,7 @@ import ${applicationPackage}.utils.commons.UseCase
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
     : InputOnlyUseCase<${useCaseName}.${useCaseName}Request>(executionThreads) {
 
-    data class ${useCaseName}Request(/* add input data */): UseCase.RequestValue
+    data class Request(/* add input data */): UseCase.RequestValue
 }
 <#else>
 <#if applicationPackage??>
