@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:+'
     implementation 'com.squareup.leakcanary:leakcanary-android:+'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'android.arch.lifecycle:reactivestreams:+'
     implementation 'com.squareup.retrofit2:retrofit:+'
     implementation 'com.squareup.retrofit2:converter-scalars:+'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:+'

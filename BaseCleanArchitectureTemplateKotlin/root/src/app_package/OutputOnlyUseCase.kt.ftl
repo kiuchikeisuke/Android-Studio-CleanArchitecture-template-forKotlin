@@ -6,5 +6,5 @@ abstract class OutputOnlyUseCase<R : UseCase.ResponseValue, T : Throwable>(execu
     : IoUseCase<UseCase.NoRequestValue, R, T>(executionThreads) {
     protected abstract fun execute(): Observable<R>
     override fun execute(requestValue: NoRequestValue): Observable<R> = execute()
-    fun execute(next: (R) -> Unit = {}, error: (T) -> Unit = {}, complete: () -> Unit = {}) = execute(NoRequestValue.INSTANCE, next, error, complete)
+    fun execute(next: (R) -> Unit = {}, error: (T) -> Unit = {}, complete: () -> Unit = {}): Observable<R> = execute(NoRequestValue.INSTANCE, next, error, complete)
 }

@@ -41,6 +41,7 @@
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" />
     <dependency mavenUrl="android.arch.lifecycle:extensions:+" />
+    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+" />
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -120,6 +121,8 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Activity.kt" />
     <instantiate from="root/src/app_package/Fragment.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Fragment.kt" />
+    <instantiate from="root/src/app_package/LiveDataReactiveStreams.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/LiveDataReactiveStreams.kt" />
 
     <#if includeRealm>
         <instantiate from="root/src/app_package/Observable.kt.ftl"

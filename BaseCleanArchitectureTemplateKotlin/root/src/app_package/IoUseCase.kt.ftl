@@ -2,6 +2,7 @@ package ${packageName}.utils.commons
 
 import dagger.internal.Preconditions
 import io.reactivex.Scheduler
+import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
@@ -12,12 +13,13 @@ abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue,
     protected val disposable: CompositeDisposable = CompositeDisposable()
 
     @Suppress("UNCHECKED_CAST")
-    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (T) -> Unit = {}, complete: () -> Unit = {}) {
+    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (T) -> Unit = {}, complete: () -> Unit = {}): Observable<R> {
         disposable.clear()
         val observable = execute(requestValues)
                 .subscribeOn(executionThreads.io())
 
         addDisposable(observable.subscribe(next, error as (Throwable) -> Unit, complete))
+        return observable
     }
 
     fun dispose() {
