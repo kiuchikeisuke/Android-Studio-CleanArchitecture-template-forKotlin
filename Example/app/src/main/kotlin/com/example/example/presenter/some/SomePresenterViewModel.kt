@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class SomePresenterViewModel @Inject constructor(private val getSomeData: GetSomeData) :ViewModel(), SomeContract.Presenter {
 
-    override fun load(inputParam: Int, next:(GetSomeData.GetSomeDataResponse) -> Unit) {
-        getSomeData.execute(GetSomeData.GetSomeDataRequest(inputParam), next)
+    override fun load(inputParam: Int, next:(GetSomeData.Response) -> Unit) {
+        getSomeData.execute(GetSomeData.Request(inputParam), next)
     }
 
     override fun onCleared() {

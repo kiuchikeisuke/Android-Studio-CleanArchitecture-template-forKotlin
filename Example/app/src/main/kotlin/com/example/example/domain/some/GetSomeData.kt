@@ -10,14 +10,14 @@ import com.example.example.utils.commons.IoUseCase
 import com.example.example.utils.commons.UseCase
 
 class GetSomeData @Inject constructor(private val someDataSource: SomeDataSource, executionThreads: ExecutionThreads)
-    : IoUseCase<GetSomeData.GetSomeDataRequest, GetSomeData.GetSomeDataResponse>(executionThreads) {
+    : IoUseCase<GetSomeData.Request, GetSomeData.Response, Throwable>(executionThreads) {
 
 
-    override fun execute(requestValue: GetSomeDataRequest): Observable<GetSomeDataResponse> {
-        return someDataSource.getSomeData(requestValue.inputParam).map { t -> GetSomeDataResponse(t) }
+    override fun execute(requestValue: Request): Observable<Response> {
+        return someDataSource.getSomeData(requestValue.inputParam).map { t -> Response(t) }
     }
 
-    data class GetSomeDataRequest(val inputParam:Int) : UseCase.RequestValue
-    data class GetSomeDataResponse(val someDataEntity: SomeDataEntity) : UseCase.ResponseValue
+    data class Request(val inputParam:Int) : UseCase.RequestValue
+    data class Response(val someDataEntity: SomeDataEntity) : UseCase.ResponseValue
 }
 

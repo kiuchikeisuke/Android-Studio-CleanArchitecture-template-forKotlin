@@ -9,6 +9,6 @@ interface SomeContract {
     interface View : BaseView
 
     interface Presenter : BasePresenter {
-        fun load(inputParam:Int, next: (GetSomeData.GetSomeDataResponse) -> Unit)
+        fun load(inputParam:Int, next: (GetSomeData.Response) -> Unit)
     }
 }
