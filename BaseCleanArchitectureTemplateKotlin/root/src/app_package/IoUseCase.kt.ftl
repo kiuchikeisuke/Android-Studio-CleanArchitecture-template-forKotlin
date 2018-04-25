@@ -8,15 +8,16 @@ import io.reactivex.observers.DisposableObserver
 
 
 
-abstract class IoUseCase <in Q: UseCase.RequestValue, R: UseCase.ResponseValue>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
+abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue, T : Throwable>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
     protected val disposable: CompositeDisposable = CompositeDisposable()
 
-    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (Throwable) -> Unit = {}, complete: () -> Unit = {}) {
+    @Suppress("UNCHECKED_CAST")
+    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (T) -> Unit = {}, complete: () -> Unit = {}) {
         disposable.clear()
         val observable = execute(requestValues)
                 .subscribeOn(executionThreads.io())
-                .observeOn(executionThreads.ui())
-        addDisposable(observable.subscribe(next, error, complete))
+
+        addDisposable(observable.subscribe(next, error as (Throwable) -> Unit, complete))
     }
 
     fun dispose() {
