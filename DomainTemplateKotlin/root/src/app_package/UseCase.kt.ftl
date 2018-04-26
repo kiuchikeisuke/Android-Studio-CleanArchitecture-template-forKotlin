@@ -9,7 +9,7 @@ import ${applicationPackage}.utils.commons.IoUseCase
 import ${applicationPackage}.utils.commons.UseCase
 </#if>
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
-    : IoUseCase<${useCaseName}.Request, ${useCaseName}.Response>(executionThreads) {
+    : IoUseCase<${useCaseName}.Request, ${useCaseName}.Response, Throwable>(executionThreads) {
 
     data class Request(/* add input data */): UseCase.RequestValue
     data class Response(/* add output data */): UseCase.ResponseValue
@@ -21,7 +21,7 @@ import ${applicationPackage}.utils.commons.OutputOnlyUseCase
 import ${applicationPackage}.utils.commons.UseCase
 </#if>
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
-    : OutputOnlyUseCase<${useCaseName}.Response>(executionThreads) {
+    : OutputOnlyUseCase<${useCaseName}.Response, Throwable>(executionThreads) {
 
     data class Response(/* add output data */): UseCase.ResponseValue
 }
@@ -42,7 +42,7 @@ import ${applicationPackage}.utils.commons.ExecutionThreads
 import ${applicationPackage}.utils.commons.SimpleUseCase
 </#if>
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
-    : SimpleUseCase(executionThreads) {
+    : SimpleUseCase<Throwable>(executionThreads) {
 
 }
 </#if>
