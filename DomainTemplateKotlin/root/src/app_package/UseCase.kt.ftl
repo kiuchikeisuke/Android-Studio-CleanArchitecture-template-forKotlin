@@ -32,7 +32,7 @@ import ${applicationPackage}.utils.commons.InputOnlyUseCase
 import ${applicationPackage}.utils.commons.UseCase
 </#if>
 class ${useCaseName} @Inject constructor(executionThreads: ExecutionThreads)
-    : InputOnlyUseCase<${useCaseName}.Request>(executionThreads) {
+    : InputOnlyUseCase<${useCaseName}.Request, Throwable>(executionThreads) {
 
     data class Request(/* add input data */): UseCase.RequestValue
 }
