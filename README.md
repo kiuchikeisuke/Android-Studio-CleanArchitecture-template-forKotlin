@@ -70,6 +70,8 @@ You must satisfy the following conditions.
 - [android-ktx](https://github.com/android/android-ktx)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
+- [Spek](http://spekframework.org/docs/latest/)
+- [Mockito](http://site.mockito.org/)
 
 ## Installation
 

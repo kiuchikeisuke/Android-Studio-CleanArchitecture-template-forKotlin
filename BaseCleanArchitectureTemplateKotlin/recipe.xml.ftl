@@ -19,6 +19,8 @@
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/exceptions"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/utils/di"/>
+    <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources" />
+    <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions" />
 
 
     <#-- init build.gradle -->
@@ -42,6 +44,13 @@
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
     <dependency mavenUrl="android.arch.lifecycle:extensions:+"/>
     <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+"/>
+    <dependency mavenUrl="org.jetbrains.spek:spek-api:1.1.5" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.jetbrains.spek:spek-junit-platform-engine:1.1.5" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.mockito:mockito-core:+" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.junit.platform:junit-platform-runner:1.1.0" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test:+" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test-junit:+" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-reflect:+" gradleConfiguration="testCompile"/>
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -128,6 +137,9 @@
         <instantiate from="root/src/app_package/Observable.kt.ftl"
                       to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Observable.kt" />
     </#if>
+    <#-- init mockito setting -->
+    <instantiate from="root/src/test_package/org.mockito.plugins.MockMaker.ftl"
+                  to="{escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" />
 
     <#-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
