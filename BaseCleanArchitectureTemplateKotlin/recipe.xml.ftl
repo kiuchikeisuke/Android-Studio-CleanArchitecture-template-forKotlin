@@ -39,9 +39,9 @@
     <dependency mavenUrl="com.android.support.constraint:constraint-layout:+" />
     <dependency mavenUrl="androidx.core:core-ktx:+" />
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
-    <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" />
-    <dependency mavenUrl="android.arch.lifecycle:extensions:+" gradleConfiguration="debugCompile"/>
-    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+" gradleConfiguration="debugCompile"/>
+    <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
+    <dependency mavenUrl="android.arch.lifecycle:extensions:+"/>
+    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+"/>
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -133,5 +133,4 @@
     <instantiate from="root/res/layout/base_activity.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/base_activity.xml" />
     <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />
-
 </recipe>
