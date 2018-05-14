@@ -7,7 +7,7 @@
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/main/kotlin"/>
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/kotlin"/>
     </#if>
-    <mkdir at="${escapeXmlAttribute(projectOut)}/proguard" />
+    <mkdir at="${escapeXmlAttribute(topOut)}/proguard" />
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data/datasource"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/data/entity"/>
@@ -40,8 +40,8 @@
     <dependency mavenUrl="androidx.core:core-ktx:+" />
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" />
-    <dependency mavenUrl="android.arch.lifecycle:extensions:+" />
-    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+" />
+    <dependency mavenUrl="android.arch.lifecycle:extensions:+" gradleConfiguration="debugCompile"/>
+    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+" gradleConfiguration="debugCompile"/>
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -53,24 +53,24 @@
     </#if>
     <#-- init proguard -->
     <instantiate from="root/proguard/proguard-google-dagger2.pro.ftl"
-                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-google-dagger2.pro" />
+                  to="${escapeXmlAttribute(topOut)}/proguard/proguard-google-dagger2.pro" />
     <instantiate from="root/proguard/proguard-rx-java.pro.ftl"
-                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-rx-java.pro" />
+                  to="${escapeXmlAttribute(topOut)}/proguard/proguard-rx-java.pro" />
     <instantiate from="root/proguard/proguard-rx-java2.pro.ftl"
-                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-rx-java2.pro" />
+                  to="${escapeXmlAttribute(topOut)}/proguard/proguard-rx-java2.pro" />
     <instantiate from="root/proguard/proguard-support-design.pro.ftl"
-                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-support-design.pro" />
+                  to="${escapeXmlAttribute(topOut)}/proguard/proguard-support-design.pro" />
     <instantiate from="root/proguard/proguard-support-v7-appcompat.pro.ftl"
-                  to="${escapeXmlAttribute(projectOut)}/proguard/proguard-support-v7-appcompat.pro" />
+                  to="${escapeXmlAttribute(topOut)}/proguard/proguard-support-v7-appcompat.pro" />
     <#if includeRetrofit>
         <instantiate from="root/proguard/proguard-okhttp3.pro.ftl"
-                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-okhttp3.pro" />
+                      to="${escapeXmlAttribute(topOut)}/proguard/proguard-okhttp3.pro" />
         <instantiate from="root/proguard/proguard-square-retrofit2.pro.ftl"
-                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-square-retrofit2.pro" />
+                      to="${escapeXmlAttribute(topOut)}/proguard/proguard-square-retrofit2.pro" />
         <instantiate from="root/proguard/proguard-okio.pro.ftl"
-                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-okio.pro" />
+                      to="${escapeXmlAttribute(topOut)}/proguard/proguard-okio.pro" />
         <instantiate from="root/proguard/proguard-moshi.pro.ftl"
-                      to="${escapeXmlAttribute(projectOut)}/proguard/proguard-moshi.pro" />
+                      to="${escapeXmlAttribute(topOut)}/proguard/proguard-moshi.pro" />
     </#if>
 
 

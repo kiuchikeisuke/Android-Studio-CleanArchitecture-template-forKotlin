@@ -34,10 +34,10 @@ android {
           minifyEnabled true
           shrinkResources true
 //          FIXME comment out this!!
-//          proguardFiles {
-//              getDefaultProguardFile('proguard-android.txt')
-//              "proguard-rules.pro"
-//          }
+//          proguardFile getDefaultProguardFile('proguard-android.txt')
+//          // global proguard settings
+//          proguardFile file("proguard-rules.pro")
+//          // library proguard settings
 //          def files = rootProject.file("proguard")
 //                  .listFiles()
 //                  .findAll { it.name.startsWith("proguard") }
