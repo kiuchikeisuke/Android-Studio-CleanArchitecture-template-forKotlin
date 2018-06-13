@@ -5,6 +5,10 @@
 </#if>
 // FIXME comment out this!! and move to file top!!
 // apply plugin: 'kotlin-kapt'
+// apply plugin: "com.github.konifar.gradle.unused-resources-remover"
+
+// FIXME comment out this!! and move to file end!!
+// clean.dependsOn(removeUnusedResources)
 </#compress>
 
 android {
