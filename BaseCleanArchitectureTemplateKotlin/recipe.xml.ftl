@@ -44,6 +44,7 @@
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
     <dependency mavenUrl="android.arch.lifecycle:extensions:+"/>
     <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+"/>
+    <dependency mavenUrl="com.google.android.gms:play-services-oss-licenses:+" />
     <dependency mavenUrl="org.jetbrains.spek:spek-api:1.1.5" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.spek:spek-junit-platform-engine:1.1.5" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.mockito:mockito-core:+" gradleConfiguration="testCompile" />
