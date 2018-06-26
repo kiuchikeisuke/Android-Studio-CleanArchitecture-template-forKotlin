@@ -64,7 +64,7 @@ private fun <S> createService(serviceClass: Class<S>, retrofitBuilder:Retrofit.B
 
     /*FIXME if you add some RetrofitService, add provide method. Like this */
     //  @Provides fun provideSomeApiService(retrofitBuilder:Retrofit.Builder, builder: OkHttpClient.Builder):SomeApiService {
-    //      createService(SomeApiService::class.java,retrofitBuilder, builder)
+    //     return createService(SomeApiService::class.java,retrofitBuilder, builder)
     //  }
 </#if>
 
