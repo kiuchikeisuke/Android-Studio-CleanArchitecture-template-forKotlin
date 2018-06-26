@@ -2,7 +2,7 @@ package ${packageName}.utils.di
 
 import dagger.Module
 <#if includeRetrofit>
-import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Provides
 import okhttp3.OkHttpClient
