@@ -1,11 +1,9 @@
 package ${packageName}.utils.commons
 
 import dagger.internal.Preconditions
-import io.reactivex.Scheduler
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
 import timber.log.Timber
 
 
@@ -17,6 +15,7 @@ abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue,
         disposable.clear()
         val observable = execute(requestValues)
                 .subscribeOn(executionThreads.io())
+                .observeOn(executionThreads.ui())
 
         addDisposable(observable.subscribe(next, error as (Throwable) -> Unit, complete))
         return observable
