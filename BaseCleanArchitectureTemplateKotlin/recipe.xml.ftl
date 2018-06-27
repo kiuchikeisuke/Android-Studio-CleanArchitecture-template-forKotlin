@@ -140,7 +140,7 @@
     </#if>
     <#-- init mockito setting -->
     <instantiate from="root/src/test_package/org.mockito.plugins.MockMaker.ftl"
-                  to="{escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" />
+                  to="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" />
 
     <#-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
