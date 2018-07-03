@@ -9,9 +9,12 @@ import timber.log.Timber
 
 abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue, T : Throwable>(private val executionThreads: ExecutionThreads) : UseCase<Q, R>() {
     protected val disposable: CompositeDisposable = CompositeDisposable()
+    protected val defaultNext:(R) -> Unit = {}
+    protected val defaultError:(T) -> Unit  = {Timber.e(it)}
+    protected val defaultComplete:() -> Unit = {}
 
     @Suppress("UNCHECKED_CAST")
-    fun execute(requestValues: Q, next: (R) -> Unit = {}, error: (T) -> Unit = { Timber.e(it) }, complete: () -> Unit = {}): Observable<R> {
+    open fun execute(requestValues: Q, next: (R) -> Unit = defaultNext, error: (T) -> Unit = defaultError, complete: () -> Unit = defaultComplete): Observable<R> {
         disposable.clear()
         val observable = execute(requestValues)
                 .subscribeOn(executionThreads.io())
