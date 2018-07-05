@@ -1,7 +1,6 @@
 package ${packageName}
 
-import javax.inject.Inject
-
-class ${dataRepositoryName} @Inject constructor(): ${dataSourceName} {
-
+interface ${dataRepositoryName} {
+/*    FIXME MUST add below method to RepositoryModules */
+//    @Binds abstract fun bind${dataRepositoryName}(dataStore: ${dataStoreName}):${dataRepositoryName}
 }
