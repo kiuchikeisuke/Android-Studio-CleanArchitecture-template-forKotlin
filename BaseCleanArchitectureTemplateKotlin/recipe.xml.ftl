@@ -77,8 +77,6 @@
                       to="${escapeXmlAttribute(topOut)}/proguard/proguard-okhttp3.pro" />
         <instantiate from="root/proguard/proguard-square-retrofit2.pro.ftl"
                       to="${escapeXmlAttribute(topOut)}/proguard/proguard-square-retrofit2.pro" />
-        <instantiate from="root/proguard/proguard-okio.pro.ftl"
-                      to="${escapeXmlAttribute(topOut)}/proguard/proguard-okio.pro" />
         <instantiate from="root/proguard/proguard-moshi.pro.ftl"
                       to="${escapeXmlAttribute(topOut)}/proguard/proguard-moshi.pro" />
     </#if>
