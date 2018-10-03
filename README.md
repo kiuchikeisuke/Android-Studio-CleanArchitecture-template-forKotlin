@@ -92,6 +92,7 @@ Just copy all 5 directories
 - `DataTemplateKotlin`
 - `DomainTemplateKotlin`
 - `PresenterActivityTemplateKotlin`
+- `PresenterFragmentTemplateKotlin`
 - `PresenterServiceTemplateKotlin`
 - `PresenterBroadcastReceiverTemplateKotlin`
 
@@ -104,6 +105,7 @@ Just copy all 5 directories
 - `DataTemplateKotlin`
 - `DomainTemplateKotlin`
 - `PresenterActivityTemplateKotlin`
+- `PresenterFragmentTemplateKotlin`
 - `PresenterServiceTemplateKotlin`
 - `PresenterBroadcastReceiverTemplateKotlin`
 
@@ -251,6 +253,24 @@ So, Copy `@ContributesAndroidInjector(modules = [SomeModule::class]) @ActivitySc
 This Layer Provides UserInterface(Activity & Fragment).
 And presenterClass communicate domain-layer.
 
+#### PresenterFragmentTemplateKotlin
+This template create presenter-layer template.
+![presenterFragmentTemplate](static/presenterFragmentTemplate.png)
+
+This template will add ContractClass, PresenterViewModelClass, FragmentClass and fragment.xml.
+
+And then, please see FragmentClass. The following notice is written there.
+```
+/* FIXME MUST add below method to Parent Activity's Module */
+//    @Binds @IntoMap @ViewModelKey(SomePresenterViewModel::class) abstract fun bindSomePresenterViewModel(viewModel: SomePresenterViewModel): ViewModel
+//    @ContributesAndroidInjector abstract fun contributeSomeFragment():SomeFragment
+```
+
+So, Copy `@Binds @IntoMap @ViewModelKey(SomePresenterViewModel::class) abstract fun bindSomePresenterViewModel(viewModel: SomePresenterViewModel): ViewModel` and `@ContributesAndroidInjector abstract fun contributeSomeFragment():SomeFragment` to `Parent activity's module`.
+
+This Layer Provides UserInterface(Fragment).
+And presenterClass communicate domain-layer.
+
 #### PresenterServiceTemplateKotlin
 This template create presenter-layer template.
 ![presenterServiceTemplate](static/presenterServiceTemplate.png)
@@ -302,7 +322,7 @@ Qiitaに以下の記事を公開したのでそちらを参照
 
 # Licence
 ```
-Copyright 2017 kiuchi keisuke
+Copyright 2017- kiuchi keisuke
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

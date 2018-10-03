@@ -3,15 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-    <variable
-        name="data"
-        type="com.example.example.data.entity.SomeDataEntity"/>
-</data>
-
+        <variable
+            name="data"
+            type="com.example.example.data.entity.SomeDataEntity"/>
+    </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#20F01F"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/fragment2_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Fragment2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <Button
             android:id="@+id/input_0_button"
             android:layout_width="wrap_content"
@@ -72,6 +79,6 @@
             app:layout_constraintTop_toTopOf="@+id/labelInt"
             app:layout_constraintVertical_bias="0.0"/>
 
-    </android.support.constraint.ConstraintLayout>
 
+    </android.support.constraint.ConstraintLayout>
 </layout>
