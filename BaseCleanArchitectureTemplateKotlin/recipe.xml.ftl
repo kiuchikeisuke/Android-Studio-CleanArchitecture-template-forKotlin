@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <#import "root://activities/common/kotlin_macros.ftl" as kt>
 <recipe>
-    <#-- init dirs -->
+    <!-- init dirs -->
     <#if createKotlinDir>
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/androidTest/kotlin"/>
       <mkdir at="${escapeXmlAttribute(projectOut)}/src/main/kotlin"/>
@@ -23,7 +23,7 @@
     <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions" />
 
 
-    <#-- init build.gradle -->
+    <!-- init build.gradle -->
     <@kt.addAllKotlinDependencies />
     <merge from="root/top_build.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/build.gradle" />
@@ -39,19 +39,26 @@
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
     <dependency mavenUrl="com.jakewharton.threetenabp:threetenabp:+" />
     <dependency mavenUrl="com.android.support.constraint:constraint-layout:+" />
-    <dependency mavenUrl="androidx.core:core-ktx:+" />
+    <!-- temporary unsupported -->
+    <!-- <dependency mavenUrl="androidx.core:core-ktx:+" /> -->
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
     <dependency mavenUrl="android.arch.lifecycle:extensions:+"/>
     <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+"/>
-    <dependency mavenUrl="com.google.android.gms:play-services-oss-licenses:+" />
+    <!-- testLibraries -->
     <dependency mavenUrl="org.jetbrains.spek:spek-api:1.1.5" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.spek:spek-junit-platform-engine:1.1.5" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.robolectric:robolectric:4.0-alpha-2" gradleConfiguration="testCompile" />
+    <dependency mavenUrl="org.assertj:assertj-core:3.10.0" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.mockito:mockito-core:+" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.junit.platform:junit-platform-runner:1.1.0" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test:+" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test-junit:+" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-reflect:+" gradleConfiguration="testCompile"/>
+    <!-- androidTestLibraries -->
+    <dependency mavenUrl="com.android.support.test:rules:1.0.2" gradleConfiguration="androidTestCompile" />
+    <dependency mavenUrl="com.android.support.test:runner:1.0.2" gradleConfiguration="androidTestCompile" />
+    <dependency mavenUrl="com.android.support.test.espresso:espresso-core:3.0.2" gradleConfiguration="androidTestCompile" />
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -60,8 +67,10 @@
       <dependency mavenUrl="com.squareup.retrofit:converter-moshi:+" />
       <dependency mavenUrl="com.squareup.moshi:moshi:+" />
       <dependency mavenUrl="com.squareup.moshi:moshi-kotlin:+" />
+      <!-- testLibraries -->
+      <dependency mavenUrl="com.squareup.okhttp3:mockwebserver:+" gradleConfiguration="testCompile"/>
     </#if>
-    <#-- init proguard -->
+    <!-- init proguard -->
     <instantiate from="root/proguard/proguard-google-dagger2.pro.ftl"
                   to="${escapeXmlAttribute(topOut)}/proguard/proguard-google-dagger2.pro" />
     <instantiate from="root/proguard/proguard-rx-java.pro.ftl"
@@ -82,13 +91,13 @@
     </#if>
 
 
-    <#-- init AndroidManifest -->
+    <!-- init AndroidManifest -->
     <merge from="root/AndroidManifest.xml.ftl"
                   to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
 
 
 
-    <#-- init base Classes -->
+    <!-- init base Classes -->
     <instantiate from="root/src/app_package/ActivityScope.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/ActivityScope.kt" />
     <instantiate from="root/src/app_package/ViewModelKey.kt.ftl"
@@ -136,11 +145,11 @@
         <instantiate from="root/src/app_package/Observable.kt.ftl"
                       to="${escapeXmlAttribute(srcOutKotlin)}/utils/extensions/Observable.kt" />
     </#if>
-    <#-- init mockito setting -->
+    <!-- init mockito setting -->
     <instantiate from="root/src/test_package/org.mockito.plugins.MockMaker.ftl"
                   to="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" />
 
-    <#-- init base res -->
+    <!-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/base_activity.xml" />
     <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />

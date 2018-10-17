@@ -6,7 +6,6 @@
 // FIXME comment out this!! and move to file top!!
 // apply plugin: 'kotlin-kapt'
 // apply plugin: "com.github.konifar.gradle.unused-resources-remover"
-// apply plugin: 'com.google.gms.oss.licenses.plugin'
 
 
 // FIXME comment out this!! and move to file end!!
@@ -14,6 +13,9 @@
 </#compress>
 
 android {
+  defaultConfig {
+     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+}
   sourceSets {
       main.java.srcDirs += 'src/main/kotlin'
       test.java.srcDirs += 'src/test/kotlin'
@@ -52,6 +54,9 @@ android {
 //          proguardFiles(files)
       }
   }
+  testOptions {
+      unitTests.includeAndroidResources true
+  }
 }
 
 dependencies {
@@ -59,4 +64,14 @@ dependencies {
   kapt 'com.google.dagger:dagger-compiler:2.+'
   kapt 'com.google.dagger:dagger-android-processor:2.+'
 </#compress>
+}
+
+// FIXME add dependencies
+//  androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2', {
+//      exclude group: 'com.android.support'
+//  }
+
+configurations.all {
+    //FIXME replace version to SAME support Library Version!!
+    resolutionStrategy.force "com.android.support:support-annotations:${buildApi}.+"
 }

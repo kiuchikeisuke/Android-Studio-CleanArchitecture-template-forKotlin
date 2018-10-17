@@ -67,11 +67,13 @@ You must satisfy the following conditions.
 - [ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
 - [Retrofit2](http://square.github.io/retrofit/)
 - [Swagger](https://swagger.io/)
-- [android-ktx](https://github.com/android/android-ktx)
+- ~~[android-ktx](https://github.com/android/android-ktx)~~(Temporary unsupported, Because conflict with AndroidX Libs)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
-- [Spek](http://spekframework.org/docs/latest/)
+- [Spek1.X](http://spekframework.org/docs/latest/)
 - [Mockito](http://site.mockito.org/)
+- [robolectric](http://robolectric.org/)
+- [Assert-J](http://joel-costigliola.github.io/assertj/)
 
 ## Installation
 
@@ -193,17 +195,30 @@ Paste top of build.gradle
 
 ```
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 + apply plugin: 'realm-android'
-
 + apply plugin: 'kotlin-kapt'
-
 android {
+```
 
+*3rd FIXME* add dependencies
+```
+dependencies {
+  ...
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2', {
+      exclude group: 'com.android.support'
+    }
+}
+```
+
+*4th FIXME* replace version to SAME support Library Version
+```
+configurations.all {
+    //FIXME replace version to SAME support Library Version!!
+
+    resolutionStrategy.force "com.android.support:support-annotations:28.+"
+}
 ```
 
 ### Use CleanArchitecture Template
