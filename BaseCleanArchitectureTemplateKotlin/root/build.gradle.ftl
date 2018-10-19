@@ -61,6 +61,7 @@ android {
 
 dependencies {
 <#compress>
+  kapt 'com.android.databinding:compiler:3.+'
   kapt 'com.google.dagger:dagger-compiler:2.+'
   kapt 'com.google.dagger:dagger-android-processor:2.+'
 </#compress>

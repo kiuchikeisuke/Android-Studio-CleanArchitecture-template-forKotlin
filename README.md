@@ -178,6 +178,7 @@ release {
 *2nd FIXME* Uncomment out and move to Top this Code
 ```
 ........
+kapt 'com.android.databinding:compiler:3.+'
 kapt 'com.google.dagger:dagger-compiler:2.+'
 kapt 'com.google.dagger:dagger-android-processor:2.+'
 }
