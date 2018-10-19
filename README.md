@@ -52,6 +52,9 @@ res
  |    - base_activity.xml
 ```
 
+## Support androidX
+V1.X is **un**supported androidX.
+
 ## Prerequisites
 You must satisfy the following conditions.
 
@@ -67,7 +70,7 @@ You must satisfy the following conditions.
 - [ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
 - [Retrofit2](http://square.github.io/retrofit/)
 - [Swagger](https://swagger.io/)
-- ~~[android-ktx](https://github.com/android/android-ktx)~~(Temporary unsupported, Because conflict with AndroidX Libs)
+- ~~[android-ktx](https://github.com/android/android-ktx)~~(V1.X is unsupported androidX libs.)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
 - [Spek1.X](http://spekframework.org/docs/latest/)
