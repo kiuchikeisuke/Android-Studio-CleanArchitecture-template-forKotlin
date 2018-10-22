@@ -46,13 +46,19 @@
         help="The name of the PresenterViewModel class name to create" />
 
     <parameter
-        id="activityName"
+        id="activityClass"
         name="Activity Name"
         type="string"
         constraints="class|unique|nonempty"
         suggest="${presenterTagName}Activity"
         default="MainActivity"
         help="The name of the Activity class name to create" />
+      <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
 
     <parameter
         id="fragmentName"
@@ -68,9 +74,10 @@
         name="Fragment Layout Name"
         type="string"
         constraints="layout|unique|nonempty"
-        suggest="${activityToLayout(activityName, 'fragment')}"
+        suggest="${activityToLayout(activityClass, 'fragment')}"
         default="fragment_main"
         help="The name of the layout to create for the activity's content fragment"/>
+
     <parameter
       id="bindingName"
       name="Binding Class Name"
