@@ -5,6 +5,14 @@ This repository is made with reference to  [Android-Studio-MVP-template](https:/
 
 It is inspired [Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture) and [android-architecture-component](https://github.com/googlesamples/android-architecture-components)
 
+## Support androidX ONLY
+V2.X is supported **androidX ONLY!!**.
+
+So, **if your project don't migrate to androidX,please do it first!!**
+
+Or,please use V1.X templates
+
+## Hierarchy
 Here's the hierarchy it follows:
 ```
 com.company.app
@@ -52,13 +60,10 @@ res
  |    - base_activity.xml
 ```
 
-## Support androidX
-V1.X is **un**supported androidX.
-
 ## Prerequisites
 You must satisfy the following conditions.
 
-- [Kotlin](https://kotlinlang.org/)**(Recommended to use [Android-Studio 3.X](https://developer.android.com/studio/preview/index.html))**
+- [Kotlin](https://kotlinlang.org/)**(Recommended to use [Android-Studio 3.3](https://developer.android.com/studio/preview/index.html))**
 - [Dagger2](https://google.github.io/dagger/) for dependency injection
 - [RxJava2](https://github.com/ReactiveX/RxJava) for Asynchronous processing.
 - [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html) (Default Support)
@@ -70,7 +75,7 @@ You must satisfy the following conditions.
 - [ConstraintLayout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html)
 - [Retrofit2](http://square.github.io/retrofit/)
 - [Swagger](https://swagger.io/)
-- ~~[android-ktx](https://github.com/android/android-ktx)~~(V1.X is unsupported androidX libs.)
+- [android-ktx](https://github.com/android/android-ktx)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
 - [Spek1.X](http://spekframework.org/docs/latest/)
@@ -121,8 +126,9 @@ and paste to  `$ANDROID_STUDIO_FOLDER$\plugins\android\lib\templates\activities\
 First of all, create the base hierarchy and classes using `CleanArchitectureTemplate` from the **root package folder**. This needs to be done only once per project:
 ![CleanArchitectureTemplate](static/selectBaseTemplate.png "BaseCleanArchitectureTemplateKotlin")
 
-Or if you create a new project, please select `CleanArchitectureTemplate` on this screen
-![CleanArchitectureTemplate](static/createNewPrj.png "BaseCleanArchitectureTemplateKotlin")
+~~Or if you create a new project, please select `CleanArchitectureTemplate` on this screen~~.
+
+**Android Studio 3.3 maybe unsupport to add original Template to Create a new Project Selection**..
 
 Next, you set project config.
 - **Application Class Name** -> Set Root ApplicationClass Name
@@ -135,95 +141,13 @@ Next, you set project config.
 
 When all settings are completed click the Finish button!!
 
-#### 2. Fix build.gradle
-If you get folloing error, fix root/build.gradle.
-![Gradle Error](static/gradleError.png "gradle Error")
+#### 2.FIX build.gradles!!
+Completed to generate Base classes, it will added `FIXME_merge_to_build.gradle` files.
+![FIXME_merge_to_build](static/fixme_merge_to_gradle.png)
 
-```
-buildscript {
--    ext.kotlin_version = '1.1.2-3'
-+    ext.kotlin_version = '1.1.2-4'
-    repositories {
-        maven { url 'https://maven.google.com' }
-        jcenter()
-    }
-```
+Open these files and **merge to original `build.gradle` files.**
 
-By the way, this error has already been discussed in [Stack Over Flow](https://stackoverflow.com/questions/44042754/android-studio-3-0-unable-to-find-method-com-android-build-gradle-internal-va)
-
-
-
-**Some time, app/build.gradle file will also be broken...(WANTED  Info)**.
-So, **Some settings are commented out**.
-for that reason, **MUST FIX these FIXME!!**
-
-*1st FIXME* Uncomment out
-```
-release {
-    minifyEnabled true
-    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    debuggable false
-    zipAlignEnabled true
-    shrinkResources true
-    //          FIXME comment out this!!
-    //          proguardFiles {
-    //              getDefaultProguardFile('proguard-android.txt')
-    //              "proguard-rules.pro"
-    //          }
-    //          def files = rootProject.file("proguard")
-    //                  .listFiles()
-    //                  .findAll { it.name.startsWith("proguard") }
-    //                  .toList()
-    //                  .toArray()
-    //          proguardFiles(files)
-}
-```
-*2nd FIXME* Uncomment out and move to Top this Code
-```
-........
-kapt 'com.android.databinding:compiler:3.+'
-kapt 'com.google.dagger:dagger-compiler:2.+'
-kapt 'com.google.dagger:dagger-android-processor:2.+'
-}
-
-// FIXME comment out this!! and move to file top!!
-
-// apply plugin: 'realm-android'
-
-// FIXME comment out this!! and move to file top!!
-
-// apply plugin: 'kotlin-kapt'
-```
-
-Paste top of build.gradle
-
-```
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-+ apply plugin: 'realm-android'
-+ apply plugin: 'kotlin-kapt'
-android {
-```
-
-*3rd FIXME* add dependencies
-```
-dependencies {
-  ...
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2', {
-      exclude group: 'com.android.support'
-    }
-}
-```
-
-*4th FIXME* replace version to SAME support Library Version
-```
-configurations.all {
-    //FIXME replace version to SAME support Library Version!!
-
-    resolutionStrategy.force "com.android.support:support-annotations:28.+"
-}
-```
+End of merge, **execute gradle sync**!!
 
 ### Use CleanArchitecture Template
 Some templates need your work.
