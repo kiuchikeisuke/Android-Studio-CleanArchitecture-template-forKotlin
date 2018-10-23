@@ -25,12 +25,12 @@
 
     <!-- init build.gradle -->
     <@kt.addAllKotlinDependencies />
-    <merge from="root/top_build.gradle.ftl"
-             to="${escapeXmlAttribute(topOut)}/build.gradle" />
+    <instantiate from="root/top_build.gradle.ftl"
+             to="${escapeXmlAttribute(topOut)}/FIXME_merge_to_build.gradle" />
     <instantiate from="root/versions.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/versions.gradle" />
-    <merge from="root/build.gradle.ftl"
-             to="${escapeXmlAttribute(projectOut)}/build.gradle" />
+    <instantiate from="root/build.gradle.ftl"
+             to="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
     <dependency mavenUrl="com.google.dagger:dagger:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android:2.+" />
     <dependency mavenUrl="com.google.dagger:dagger-android-support:2.+" />
@@ -39,12 +39,11 @@
     <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
     <dependency mavenUrl="com.jakewharton.threetenabp:threetenabp:+" />
     <dependency mavenUrl="com.android.support.constraint:constraint-layout:+" />
-    <!-- temporary unsupported -->
-    <!-- <dependency mavenUrl="androidx.core:core-ktx:+" /> -->
+    <dependency mavenUrl="androidx.core:core-ktx:+" />
     <dependency mavenUrl="com.jakewharton.timber:timber:+" />
     <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
-    <dependency mavenUrl="android.arch.lifecycle:extensions:+"/>
-    <dependency mavenUrl="android.arch.lifecycle:reactivestreams:+"/>
+    <dependency mavenUrl="androidx.lifecycle:lifecycle-extensions:+"/>
+    <dependency mavenUrl="androidx.lifecycle:lifecycle-reactivestreams:+"/>
     <!-- testLibraries -->
     <dependency mavenUrl="org.jetbrains.spek:spek-api:1.1.5" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.spek:spek-junit-platform-engine:1.1.5" gradleConfiguration="testCompile" />
@@ -55,10 +54,7 @@
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test:+" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test-junit:+" gradleConfiguration="testCompile" />
     <dependency mavenUrl="org.jetbrains.kotlin:kotlin-reflect:+" gradleConfiguration="testCompile"/>
-    <!-- androidTestLibraries -->
-    <dependency mavenUrl="com.android.support.test:rules:1.0.2" gradleConfiguration="androidTestCompile" />
-    <dependency mavenUrl="com.android.support.test:runner:1.0.2" gradleConfiguration="androidTestCompile" />
-    <dependency mavenUrl="com.android.support.test.espresso:espresso-core:3.0.2" gradleConfiguration="androidTestCompile" />
+
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
       <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
@@ -152,5 +148,8 @@
     <!-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/base_activity.xml" />
+    <open file="${escapeXmlAttribute(topOut)}/build.gradle" />
+    <open file="${escapeXmlAttribute(topOut)}/FIXME_merge_to_build.gradle" />
     <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />
+    <open file="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
 </recipe>

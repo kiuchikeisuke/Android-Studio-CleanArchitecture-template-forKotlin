@@ -1,6 +1,6 @@
 package ${packageName}.utils.extensions
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 inline fun <reified T> Fragment.lazyWithArgs(key: String): Lazy<T> {
     return lazy { arguments!!.get(key) as T }

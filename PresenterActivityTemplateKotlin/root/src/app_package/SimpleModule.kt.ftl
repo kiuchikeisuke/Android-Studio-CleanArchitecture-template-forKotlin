@@ -1,6 +1,6 @@
 package ${packageName}
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import ${applicationPackage}.utils.annotations.ViewModelKey
 import dagger.Binds
 import dagger.Module
@@ -13,5 +13,5 @@ abstract class ${moduleName} {
     @ContributesAndroidInjector abstract fun contribute${fragmentName}():${fragmentName}
 
     /* FIXME MUST add below method to BindingModules */
-    // @ContributesAndroidInjector(modules = [${moduleName}::class]) @ActivityScope abstract fun contribute${activityName}Injector(): ${activityName}
+    // @ContributesAndroidInjector(modules = [${moduleName}::class]) @ActivityScope abstract fun contribute${activityClass}Injector(): ${activityClass}
 }
