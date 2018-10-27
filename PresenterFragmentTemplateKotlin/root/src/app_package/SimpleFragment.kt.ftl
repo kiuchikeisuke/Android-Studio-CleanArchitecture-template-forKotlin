@@ -16,9 +16,6 @@ import ${applicationPackage}.utils.di.Injectable
 </#if>
 
 class ${fragmentName} : Fragment(), Injectable, ${contractName}.View {
-      /* FIXME MUST add below method to Parent Activity's Module */
-//    @Binds @IntoMap @ViewModelKey(${presenterViewModelName}::class) abstract fun bind${presenterViewModelName}(viewModel: ${presenterViewModelName}): ViewModel
-//    @ContributesAndroidInjector abstract fun contribute${fragmentName}():${fragmentName}
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private val presenterVM:${presenterViewModelName}  by lazy {

@@ -96,6 +96,8 @@
     <!-- init base Classes -->
     <instantiate from="root/src/app_package/ActivityScope.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/ActivityScope.kt" />
+    <instantiate from="root/src/app_package/FragmentScope.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/FragmentScope.kt" />
     <instantiate from="root/src/app_package/ViewModelKey.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/annotations/ViewModelKey.kt" />
     <instantiate from="root/src/app_package/ApiModules.kt.ftl"

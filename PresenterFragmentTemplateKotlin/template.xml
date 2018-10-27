@@ -28,6 +28,15 @@
         help="The name of the contract interface name to create" />
 
     <parameter
+        id="moduleName"
+        name="Module Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${presenterTagName}Module"
+        default="MainModule"
+        help="The name of the Module class name to create" />
+
+    <parameter
         id="presenterViewModelName"
         name="PresenterViewModel Name"
         type="string"
