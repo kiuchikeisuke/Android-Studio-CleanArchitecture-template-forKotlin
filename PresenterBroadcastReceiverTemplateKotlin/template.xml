@@ -19,6 +19,15 @@
         help="The name of the presenter tag to create" />
 
     <parameter
+        id="moduleName"
+        name="moduleName"
+        type="string"
+        constraints="module|nonempty"
+        suggest="app"
+        default="app"
+        help="target Module" />
+
+    <parameter
         id="contractName"
         name="Contract Name"
         type="string"

@@ -19,6 +19,15 @@
         help="The name of the Application class name to create" />
 
     <parameter
+        id="moduleName"
+        name="moduleName"
+        type="string"
+        constraints="module|nonempty"
+        suggest="app"
+        default="app"
+        help="target Module" />
+        
+    <parameter
         id="createKotlinDir"
         name="Create kotlin src dirs?"
         type="boolean"

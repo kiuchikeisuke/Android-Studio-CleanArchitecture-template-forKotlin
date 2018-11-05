@@ -5,5 +5,5 @@
     <global id="excludeMenu" type="boolean" value="true" />
     <global id="generateActivityTitle" type="boolean" value="false" />
     <#include "../common/common_globals.xml.ftl" />
-    <global id="srcOutKotlin" value="app/src/main/kotlin/${slashedPackageName(packageName)}" />
+    <global id="srcOutKotlin" value="${moduleName}/src/main/kotlin/${slashedPackageName(packageName)}" />
 </globals>

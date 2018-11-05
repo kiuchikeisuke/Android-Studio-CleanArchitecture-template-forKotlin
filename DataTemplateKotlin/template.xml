@@ -17,6 +17,15 @@
         constraints="class|unique|nonempty"
         default="Main"
         help="The name of the data class tag to create" />
+        
+    <parameter
+        id="moduleName"
+        name="moduleName"
+        type="string"
+        constraints="module|nonempty"
+        suggest="app"
+        default="app"
+        help="target Module" />
 
     <parameter
         id="dataRepositoryName"

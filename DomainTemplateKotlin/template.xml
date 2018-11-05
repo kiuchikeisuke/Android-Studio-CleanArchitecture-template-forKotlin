@@ -18,6 +18,16 @@
         default="MainUseCase"
         help="The name of the usecase class name to create" />
 
+
+    <parameter
+        id="moduleName"
+        name="moduleName"
+        type="string"
+        constraints="module|nonempty"
+        suggest="app"
+        default="app"
+        help="target Module" />
+
     <parameter
         id="existInput"
         name="Exist INPUT Params"
