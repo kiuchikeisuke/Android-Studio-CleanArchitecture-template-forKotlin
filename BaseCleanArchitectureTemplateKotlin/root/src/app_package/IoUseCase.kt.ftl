@@ -25,7 +25,7 @@ abstract class IoUseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue,
     }
 
     fun dispose() {
-        if (disposable.isDisposed) {
+        if (!disposable.isDisposed) {
             disposable.dispose()
         }
     }
