@@ -1,9 +1,8 @@
 package ${packageName}.utils.commons
 
 import io.reactivex.Observable
-import timber.log.Timber
 
-abstract class OutputOnlyUseCase<R : UseCase.ResponseValue, T : Throwable>(executionThreads: ExecutionThreads)
+abstract class OutputUseCase<R : UseCase.ResponseValue, T : Throwable>(executionThreads: ExecutionThreads)
     : IoUseCase<UseCase.NoRequestValue, R, T>(executionThreads) {
     protected abstract fun execute(): Observable<R>
     override fun execute(requestValue: NoRequestValue): Observable<R> = execute()

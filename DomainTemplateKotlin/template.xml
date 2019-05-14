@@ -24,8 +24,8 @@
         name="moduleName"
         type="string"
         constraints="module|nonempty"
-        suggest="app"
-        default="app"
+        suggest="domain"
+        default="domain"
         help="target Module" />
 
     <parameter
