@@ -1,3 +1,5 @@
+import de.mannodermaus.gradle.plugins.junit5.junitPlatform
+
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -19,12 +21,31 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            consumerProguardFile(file("proguard-rules.pro"))
+        }
+    }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                includeEngines("spek2")
+                includeEngines("junit-vintage")
+            }
+        }
+    }
+
+
     dexOptions.javaMaxHeapSize = "2g"
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to arrayOf("*.jar"))))
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.processor)
+    implementation(Deps.AndroidX.appCompat)
     implementation(Deps.Dagger.core)
     implementation(Deps.Dagger.android)
     implementation(Deps.Dagger.androidSupport)
@@ -39,10 +60,14 @@ dependencies {
     testImplementation(Deps.Test.Kotlin.core)
     testImplementation(Deps.Test.Kotlin.junit)
     testImplementation(Deps.Test.Kotlin.reflect)
+    testImplementation(Deps.Test.JUnit.core)
     testImplementation(Deps.Test.JUnit.runner)
     testImplementation(Deps.Test.JUnit.jupiterApi)
     testImplementation(Deps.Test.JUnit.jupiterEngine)
     testImplementation(Deps.Test.JUnit.vintageEngine)
+
+    androidTestImplementation(Deps.Test.AndroidX.runner)
+    androidTestImplementation(Deps.Test.AndroidX.espresso)
 }
 
 kotlin {

@@ -12,7 +12,9 @@ object Deps {
     }
 
     object AndroidX {
-        const val appCompat = "androidx.appcompat:appcompat:1.0.2"
+        private const val coreVersion = "1.0.2"
+        const val appCompat = "androidx.appcompat:appcompat:$coreVersion"
+        const val coreKtx = "androidx.core:core-ktx:$coreVersion"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
     }
 
@@ -55,14 +57,16 @@ object Deps {
 
         object JUnit {
             private const val jupiterVersion = "5.3.1"
+            const val core = "junit:junit:4.12"
             const val runner = "org.junit.platform:junit-platform-runner:1.1.0"
             const val vintageEngine = "org.junit.vintage:junit-vintage-engine:5.2.0"
             const val jupiterApi = "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
             const val jupiterEngine = "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
         }
-    }
 
-    object AndroidTest {
-
+        object AndroidX {
+            const val runner = "androidx.test:runner:1.2.0"
+            const val espresso = "androidx.test.espresso:espresso-core:3.2.0"
+        }
     }
 }
