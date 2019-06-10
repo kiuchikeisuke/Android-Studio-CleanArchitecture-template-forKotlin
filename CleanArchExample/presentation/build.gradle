@@ -1,5 +1,7 @@
 apply plugin: 'common-library'
 apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 
 dependencies {
