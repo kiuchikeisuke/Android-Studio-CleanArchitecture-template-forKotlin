@@ -69,4 +69,12 @@ object Deps {
             const val espresso = "androidx.test.espresso:espresso-core:3.2.0"
         }
     }
+
+    object Leakanary {
+        const val core = "com.squareup.leakcanary:leakcanary-android:1.6.2"
+    }
+
+    object Threetenabp {
+        const val core = "com.jakewharton.threetenabp:threetenabp:1.2.1"
+    }
 }

@@ -28,6 +28,12 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("main").java.srcDirs("src/main/kotlin")
+        getByName("test").java.srcDirs("src/test/kotlin")
+        getByName("androidTest").java.srcDirs("src/androidTest/kotlin")
+    }
+
     testOptions {
         junitPlatform {
             filters {
@@ -35,6 +41,7 @@ android {
                 includeEngines("junit-vintage")
             }
         }
+        unitTests.isIncludeAndroidResources = true
     }
 
 
@@ -45,7 +52,6 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to arrayOf("*.jar"))))
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.processor)
-    implementation(Deps.AndroidX.appCompat)
     implementation(Deps.Dagger.core)
     implementation(Deps.Dagger.android)
     implementation(Deps.Dagger.androidSupport)
@@ -53,6 +59,7 @@ dependencies {
     implementation(Deps.RxJava.kotlin)
     implementation(Deps.RxJava.android)
     implementation(Deps.Timber.core)
+    implementation(Deps.Threetenabp.core)
 
     testImplementation(Deps.Test.Spek.core)
     testImplementation(Deps.Test.Spek.runner)

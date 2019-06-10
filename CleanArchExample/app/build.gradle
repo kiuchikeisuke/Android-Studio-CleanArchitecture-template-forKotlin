@@ -1,4 +1,6 @@
 apply plugin: "android-application"
+apply plugin: "com.github.konifar.gradle.unused-resources-remover"
+
 
 android {
     defaultConfig {
@@ -13,3 +15,5 @@ dependencies {
     implementation project(":presentation")
     implementation project(":data")
 }
+
+clean.dependsOn(removeUnusedResources)
