@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: 'common-library'
 
 android {
     compileSdkVersion 28
@@ -21,6 +21,18 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2', 'junit-vintage'
+                }
+            }
+        }
+    }
 }
 
 dependencies {

@@ -17,6 +17,11 @@ android {
     }
 
     dataBinding.isEnabled = true
+
+    dexOptions.javaMaxHeapSize = "2g"
+}
+
+dependencies {
 }
 
 kotlin {

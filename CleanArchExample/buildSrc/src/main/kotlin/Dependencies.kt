@@ -2,28 +2,67 @@ object Versions {
     const val compileSdk = 28
     const val minSdk = 21
     const val targetSdk = 28
-    const val androidGradle = "3.4.1"
-
-    const val kotlin = "1.3.31"
-
-    const val appCompat = "1.0.2"
-    const val constraintLayout = "1.1.3"
-
 }
 
 @Suppress("Reformat")
 object Deps {
-    object GradlePlugin {
-        const val android = "com.android.tools.build:gradle:${Versions.androidGradle}"
-        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    }
-
     object Kotlin {
-        const val stdlibJdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+        const val version = "1.3.31"
+        const val stdlibJdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
     }
 
     object AndroidX {
-        const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val appCompat = "androidx.appcompat:appcompat:1.0.2"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
+    }
+
+    object Dagger {
+        private const val version = "2.20"
+        const val compiler = "com.google.dagger:dagger-compiler:$version"
+        const val processor = "com.google.dagger:dagger-android-processor:$version"
+        const val core = "com.google.dagger:dagger:$version"
+        const val android = "com.google.dagger:dagger-android:$version"
+        const val androidSupport = "com.google.dagger:dagger-android-support:$version"
+    }
+
+    object RxJava {
+        const val core = "io.reactivex.rxjava2:rxjava:2.2.4"
+        const val kotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
+        const val android = "io.reactivex.rxjava2:rxandroid:2.0.1"
+    }
+
+    object Timber {
+        const val core = "com.jakewharton.timber:timber:4.7.1"
+    }
+
+    object Test {
+        object Spek {
+            private const val version = "2.0.4"
+            const val core = "org.spekframework.spek2:spek-dsl-jvm:$version"
+            const val runner = "org.spekframework.spek2:spek-runner-junit5:$version"
+
+        }
+
+        object MockK {
+            const val core = "io.mockk:mockk:1.9.2.kotlin12"
+        }
+
+        object Kotlin {
+            const val core = "org.jetbrains.kotlin:kotlin-test:${Deps.Kotlin.version}"
+            const val junit = "org.jetbrains.kotlin:kotlin-test-junit:${Deps.Kotlin.version}"
+            const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Deps.Kotlin.version}"
+        }
+
+        object JUnit {
+            private const val jupiterVersion = "5.3.1"
+            const val runner = "org.junit.platform:junit-platform-runner:1.1.0"
+            const val vintageEngine = "org.junit.vintage:junit-vintage-engine:5.2.0"
+            const val jupiterApi = "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
+            const val jupiterEngine = "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
+        }
+    }
+
+    object AndroidTest {
+
     }
 }
