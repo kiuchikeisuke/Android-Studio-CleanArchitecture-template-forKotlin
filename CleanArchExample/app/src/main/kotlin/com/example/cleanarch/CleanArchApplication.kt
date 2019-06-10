@@ -1,7 +1,7 @@
 package com.example.cleanarch
 
-import com.example.cleanarch.di.applyAutoInjector
-import com.example.presentation.utils.di.DaggerRootComponent
+import com.example.cleanarch.di.DaggerRootComponent
+import com.example.presentation.utils.di.applyAutoInjector
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication

@@ -46,7 +46,7 @@ class DayOfWeekDataStore @Inject constructor() : DayOfWeekRepository {
                 Pair(DayOfWeek.FRIDAY, "金曜"),
                 Pair(DayOfWeek.SATURDAY, "土曜")
             )
-            Language.German
+            Language.Germany
             -> mapOf(
                 Pair(DayOfWeek.SUNDAY, "Sonntag"),
                 Pair(DayOfWeek.MONDAY, "Montag"),

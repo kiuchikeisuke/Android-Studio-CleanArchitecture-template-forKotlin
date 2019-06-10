@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_clean_arch_main.*
-import javax.inject.Inject
-import com.example.presentation.R
+import com.example.domain.dayofweek.entity.Language
 import com.example.presentation.databinding.FragmentCleanArchMainBinding
 import com.example.presentation.utils.di.Injectable
+import javax.inject.Inject
 
 class CleanArchMainFragment : Fragment(), Injectable, CleanArchMainContract.View {
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val presenterVM: CleanArchMainPresenterViewModel  by lazy {
@@ -26,6 +24,15 @@ class CleanArchMainFragment : Fragment(), Injectable, CleanArchMainContract.View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentCleanArchMainBinding.inflate(inflater, container!!, false)
+        binding.buttonEng.setOnClickListener {
+            presenterVM.loadDayOfWeek(Language.English) { binding.textView.text = it }
+        }
+        binding.buttonJp.setOnClickListener {
+            presenterVM.loadDayOfWeek(Language.Japanese) { binding.textView.text = it }
+        }
+        binding.buttonGar.setOnClickListener {
+            presenterVM.loadDayOfWeek(Language.Germany) { binding.textView.text = it }
+        }
         return binding.root
     }
 

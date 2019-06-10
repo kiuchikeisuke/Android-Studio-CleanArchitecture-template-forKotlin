@@ -17,14 +17,14 @@
         constraints="class|unique|nonempty"
         default="Main"
         help="The name of the presenter tag to create" />
-        
+
     <parameter
         id="moduleName"
         name="moduleName"
         type="string"
         constraints="module|nonempty"
-        suggest="app"
-        default="app"
+        suggest="presentation"
+        default="presentation"
         help="target Module" />
 
     <parameter

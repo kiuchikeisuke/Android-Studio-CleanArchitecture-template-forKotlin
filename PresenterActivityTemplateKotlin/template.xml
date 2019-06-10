@@ -20,11 +20,11 @@
 
     <parameter
         id="moduleName"
-        name="moduleName"
+        name="presentattio"
         type="string"
         constraints="module|nonempty"
-        suggest="app"
-        default="app"
+        suggest="presentation"
+        default="presentation"
         help="target Module" />
 
     <parameter

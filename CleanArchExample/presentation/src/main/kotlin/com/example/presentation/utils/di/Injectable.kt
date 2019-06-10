@@ -1,4 +1,4 @@
-package com.example.cleanarch.di
+package com.example.presentation.utils.di
 
 import android.app.Activity
 import android.app.Application
