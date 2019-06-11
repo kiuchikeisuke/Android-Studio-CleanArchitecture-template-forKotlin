@@ -4,6 +4,5 @@ import com.example.domain.dayofweek.entity.DayOfWeek
 import com.example.domain.dayofweek.entity.Language
 
 interface DayOfWeekRepository {
-    fun getTodaysDayOfWeek(): DayOfWeek
-    fun getDayOfWeekWords(language: Language): Map<DayOfWeek, String>
+    fun getDayOfWeekMap(language: Language): Map<DayOfWeek, String>
 }
