@@ -28,16 +28,17 @@ class DayOfWeekDataStore @Inject constructor() : DayOfWeekRepository {
                 Pair(DayOfWeek.FRIDAY, "金曜"),
                 Pair(DayOfWeek.SATURDAY, "土曜")
             )
-            Language.Germany
-            -> mapOf(
-                Pair(DayOfWeek.SUNDAY, "Sonntag"),
-                Pair(DayOfWeek.MONDAY, "Montag"),
-                Pair(DayOfWeek.TUESDAY, "Dienstag"),
-                Pair(DayOfWeek.WEDNESDAY, "Mittwoch"),
-                Pair(DayOfWeek.THURSDAY, "Donnerstag"),
-                Pair(DayOfWeek.FRIDAY, "Freitag"),
-                Pair(DayOfWeek.SATURDAY, "Samstag")
-            )
+            // DEMO
+//            Language.Germany
+//            -> mapOf(
+//                Pair(DayOfWeek.SUNDAY, "Sonntag"),
+//                Pair(DayOfWeek.MONDAY, "Montag"),
+//                Pair(DayOfWeek.TUESDAY, "Dienstag"),
+//                Pair(DayOfWeek.WEDNESDAY, "Mittwoch"),
+//                Pair(DayOfWeek.THURSDAY, "Donnerstag"),
+//                Pair(DayOfWeek.FRIDAY, "Freitag"),
+//                Pair(DayOfWeek.SATURDAY, "Samstag")
+//            )
         }
     }
 
