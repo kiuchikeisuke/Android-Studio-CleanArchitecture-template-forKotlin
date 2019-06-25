@@ -18,8 +18,8 @@ class GetDayOfWeek @Inject constructor(
     override fun execute(requestValue: Request): Observable<Response> {
         return Observable.create {
             try {
-                val today = systemRepository.getTodaysDayOfWeek()
                 val dayOfWeeks = dayOfWeekRepository.getDayOfWeekMap(requestValue.language)
+                val today = systemRepository.getTodaysDayOfWeek()
                 val word = dayOfWeeks[today] ?: throw IllegalArgumentException()
                 it.onNext(Response(language = requestValue.language, dayOfWeek = today, word = word))
                 it.onComplete()
