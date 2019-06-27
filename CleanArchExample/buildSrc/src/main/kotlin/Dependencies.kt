@@ -53,6 +53,7 @@ object Deps {
             const val core = "org.jetbrains.kotlin:kotlin-test:${Deps.Kotlin.version}"
             const val junit = "org.jetbrains.kotlin:kotlin-test-junit:${Deps.Kotlin.version}"
             const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Deps.Kotlin.version}"
+            const val stdlibJdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Deps.Kotlin.version}"
         }
 
         object JUnit {

@@ -67,6 +67,7 @@ dependencies {
     testImplementation(Deps.Test.Kotlin.core)
     testImplementation(Deps.Test.Kotlin.junit)
     testImplementation(Deps.Test.Kotlin.reflect)
+    testImplementation(Deps.Test.Kotlin.stdlibJdk)
     testImplementation(Deps.Test.JUnit.core)
     testImplementation(Deps.Test.JUnit.runner)
     testImplementation(Deps.Test.JUnit.jupiterApi)
