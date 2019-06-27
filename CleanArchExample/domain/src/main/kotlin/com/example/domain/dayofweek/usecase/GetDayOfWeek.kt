@@ -23,7 +23,7 @@ class GetDayOfWeek @Inject constructor(
                 val word = dayOfWeekMapper.mapper[today] ?: throw IllegalArgumentException()
                 it.onNext(Response(language = requestValue.language, dayOfWeek = today, word = word))
                 it.onComplete()
-            } catch (e: java.lang.IllegalArgumentException) {
+            } catch (e: IllegalArgumentException) {
                 it.onError(e)
             }
         }
