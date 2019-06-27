@@ -18,9 +18,9 @@ class GetDayOfWeek @Inject constructor(
     override fun execute(requestValue: Request): Observable<Response> {
         return Observable.create {
             try {
-                val dayOfWeeks = dayOfWeekRepository.getDayOfWeekMap(requestValue.language)
+                val dayOfWeekMapper = dayOfWeekRepository.getDayOfWeekMap(requestValue.language)
                 val today = systemRepository.getTodaysDayOfWeek()
-                val word = dayOfWeeks[today] ?: throw IllegalArgumentException()
+                val word = dayOfWeekMapper.mapper[today] ?: throw IllegalArgumentException()
                 it.onNext(Response(language = requestValue.language, dayOfWeek = today, word = word))
                 it.onComplete()
             } catch (e: java.lang.IllegalArgumentException) {
