@@ -23,7 +23,6 @@
     <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions" />
 
     <!-- init buildSrc -->
-    <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc"/>
     <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src"/>
     <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src/main"/>
     <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin"/>

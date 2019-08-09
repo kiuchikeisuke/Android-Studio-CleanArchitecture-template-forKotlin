@@ -29,7 +29,7 @@ android {
             isZipAlignEnabled = true
             isShrinkResources = true
             consumerProguardFile(file("proguard-rules.pro"))
-            proguardFiles(File(".//.//proguard").listFiles().filter { it.name.startsWith("proguard") }.toList())
+            proguardFiles(File(".//.//proguard").listFiles()!!.filter { it.name.startsWith("proguard") }.toList())
         }
     }
 
