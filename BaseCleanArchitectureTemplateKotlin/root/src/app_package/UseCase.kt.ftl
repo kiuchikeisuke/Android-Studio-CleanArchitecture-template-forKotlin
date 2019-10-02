@@ -6,13 +6,12 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import timber.log.Timber
 
-
-abstract class UseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue, T : Throwable>(private val executionThreads: ExecutionThreads) {
-
-    internal abstract fun execute(requestValue: Q): Observable<R>
-
+interface IUseCase {
+    fun dispose()
     interface RequestValue
     interface ResponseValue
+    data class DelegateResponse<in R : ResponseValue>(val next: (R) -> Unit = {}, val error: (Exception) -> Unit = { Timber.e(it) }, val complete: () -> Unit = {})
+
     enum class NoRequestValue : RequestValue {
         INSTANCE
     }
@@ -20,25 +19,26 @@ abstract class UseCase<in Q : UseCase.RequestValue, R : UseCase.ResponseValue, T
     enum class NoResponseValue : ResponseValue {
         INSTANCE
     }
+}
+
+abstract class UseCase<in Q : IUseCase.RequestValue, R : IUseCase.ResponseValue, S : IUseCase.DelegateResponse<R>, T : Throwable>(private val executionThreads: ExecutionThreads) {
+
+    internal abstract fun process(requestValue: Q): Observable<R>
 
     protected val disposable: CompositeDisposable = CompositeDisposable()
-    protected val defaultNext: (R) -> Unit = {}
-    protected val defaultError: (T) -> Unit = { Timber.e(it) }
-    protected val defaultComplete: () -> Unit = {}
 
     @Suppress("UNCHECKED_CAST")
-    fun execute(
+    internal fun execute(
             requestValues: Q,
-            next: (R) -> Unit = defaultNext,
-            error: (T) -> Unit = defaultError,
-            complete: () -> Unit = defaultComplete
+            delegateResponse: S,
+            disposableClear:Boolean = true
     ): Observable<R> {
-        disposable.clear()
-        val observable = execute(requestValues)
+        if (disposableClear) disposable.clear()
+        val observable = process(requestValues)
                 .subscribeOn(executionThreads.io())
                 .observeOn(executionThreads.ui())
 
-        addDisposable(observable.subscribe(next, error as (Throwable) -> Unit, complete))
+        addDisposable(observable.subscribe(delegateResponse.next, delegateResponse.error as (Throwable) -> Unit, delegateResponse.complete))
         return observable
     }
 

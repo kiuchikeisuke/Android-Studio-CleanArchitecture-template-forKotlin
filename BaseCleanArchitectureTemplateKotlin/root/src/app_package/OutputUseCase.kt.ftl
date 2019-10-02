@@ -2,10 +2,11 @@ package ${packageName}.utils.commons
 
 import io.reactivex.Observable
 
-abstract class OutputUseCase<R : UseCase.ResponseValue, T : Throwable>(executionThreads: ExecutionThreads)
-    : IoUseCase<UseCase.NoRequestValue, R, T>(executionThreads) {
-    protected abstract fun execute(): Observable<R>
-    override fun execute(requestValue: NoRequestValue): Observable<R> = execute()
-    fun execute(next: (R) -> Unit = defaultNext, error: (T) -> Unit = defaultError, complete: () -> Unit = defaultComplete): Observable<R>
-            = execute(NoRequestValue.INSTANCE, next, error, complete)
+abstract class OutputUseCase<R : IUseCase.ResponseValue, S : IUseCase.DelegateResponse<R>, T : Throwable>(executionThreads: ExecutionThreads) :
+        IoUseCase<IUseCase.NoRequestValue, R, S, T>(executionThreads) {
+    protected abstract fun process(): Observable<R>
+    override fun process(requestValue: IUseCase.NoRequestValue): Observable<R> = process()
+    fun execute(delegateResponse: S
+    ): Observable<R> = execute(IUseCase.NoRequestValue.INSTANCE, delegateResponse)
 }
+
