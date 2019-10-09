@@ -34,16 +34,12 @@ interface IUseCase {
     /**
      * Use this when there is no request parameter
      */
-    enum class NoRequestValue : RequestValue {
-        INSTANCE
-    }
+    object NoRequestValue : RequestValue
 
     /**
      * Use this when there is no response parameter
      */
-    enum class NoResponseValue : ResponseValue {
-        INSTANCE
-    }
+    object NoResponseValue : ResponseValue
 }
 
 /**

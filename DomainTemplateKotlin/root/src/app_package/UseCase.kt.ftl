@@ -36,7 +36,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
     : UseCaseHelper<IUseCase.NoRequestValue, ${useCaseName}.Response, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<${useCaseName}.Response>>(executionThreads), ${useCaseName} {
 
     override fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<${useCaseName}.Response>)
-      : Observable<${useCaseName}.Response> = execute(IUseCase.NoRequestValue.INSTANCE, delegateSubscriber, ProcessImpl())
+      : Observable<${useCaseName}.Response> = execute(IUseCase.NoRequestValue, delegateSubscriber, ProcessImpl())
 
     inner class ProcessImpl : UseCaseProcess<IUseCase.NoRequestValue, ${useCaseName}.Response> {
         override fun execProcess(requestValue: IUseCase.NoRequestValue): Observable<${useCaseName}.Response> {
@@ -78,7 +78,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
     : UseCaseHelper<IUseCase.NoRequestValue, IUseCase.NoResponseValue, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>>(executionThreads), ${useCaseName} {
 
     override fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>)
-      : Observable<IUseCase.NoResponseValue> = execute(IUseCase.NoRequestValue.INSTANCE, delegateSubscriber, ProcessImpl())
+      : Observable<IUseCase.NoResponseValue> = execute(IUseCase.NoRequestValue, delegateSubscriber, ProcessImpl())
 
     inner class ProcessImpl : UseCaseProcess<IUseCase.NoRequestValue, IUseCase.NoResponseValue> {
         override fun execProcess(requestValue: IUseCase.NoRequestValue): Observable<IUseCase.NoResponseValue> {
