@@ -29,7 +29,7 @@ interface IUseCase {
     /**
      * Delegate object for receiving the processing results performed in the Domain layer in the Presentation layer, which has the same structure as the RxJava response format
      */
-    data class DelegateSubscriber<in R : ResponseValue>(val next: (R) -> Unit = {}, val error: (Exception) -> Unit = { Timber.e(it) }, val complete: () -> Unit = {})
+    data class DelegateSubscriber<in R : ResponseValue>(val next: (R) -> Unit = {}, val error: (Throwable) -> Unit = { Timber.e(it) }, val complete: () -> Unit = {})
 
     /**
      * Use this when there is no request parameter
@@ -47,13 +47,13 @@ interface IUseCase {
 }
 
 /**
- * UseCaseの具体的な処理を表現する.
+ * Express the specific processing of UseCase.
  */
 internal interface UseCaseProcess<in Q : IUseCase.RequestValue, R : IUseCase.ResponseValue> {
     fun execProcess(requestValue: Q): Observable<R>
 }
 
-internal abstract class UseCaseHelper<in Q : IUseCase.RequestValue, R : IUseCase.ResponseValue, S : UseCaseProcess<Q, R>, T : IUseCase.DelegateSubscriber<R>, U : Throwable>(private val executionThreads: ExecutionThreads) {
+internal abstract class UseCaseHelper<in Q : IUseCase.RequestValue, R : IUseCase.ResponseValue, in S : UseCaseProcess<Q, R>, in T : IUseCase.DelegateSubscriber<R>>(private val executionThreads: ExecutionThreads) {
 
     protected val disposable: CompositeDisposable = CompositeDisposable()
 

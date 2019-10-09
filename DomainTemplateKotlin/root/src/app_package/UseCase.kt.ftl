@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 <#if existInput && existOutput>
 internal class ${useCaseName}Impl @Inject constructor(executionThreads: ExecutionThreads)
-    : UseCaseHelper<${useCaseName}.Request, ${useCaseName}.Response, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<${useCaseName}.Response>, Throwable>(executionThreads), ${useCaseName} {
+    : UseCaseHelper<${useCaseName}.Request, ${useCaseName}.Response, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<${useCaseName}.Response>>(executionThreads), ${useCaseName} {
 
     override fun exec(request: ${useCaseName}.Request, delegateSubscriber: IUseCase.DelegateSubscriber<${useCaseName}.Response>)
       : Observable<${useCaseName}.Response> = execute(request, delegateSubscriber, ProcessImpl())
@@ -33,7 +33,7 @@ interface ${useCaseName} : IUseCase {
 }
 <#elseif !existInput && existOutput>
 internal class ${useCaseName}Impl @Inject constructor(executionThreads: ExecutionThreads)
-    : UseCaseHelper<IUseCase.NoRequestValue, ${useCaseName}.Response, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<${useCaseName}.Response>, Throwable>(executionThreads), ${useCaseName} {
+    : UseCaseHelper<IUseCase.NoRequestValue, ${useCaseName}.Response, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<${useCaseName}.Response>>(executionThreads), ${useCaseName} {
 
     override fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<${useCaseName}.Response>)
       : Observable<${useCaseName}.Response> = execute(IUseCase.NoRequestValue.INSTANCE, delegateSubscriber, ProcessImpl())
@@ -54,7 +54,7 @@ interface ${useCaseName} : IUseCase {
 }
 <#elseif existInput && !existOutput>
 internal class ${useCaseName}Impl @Inject constructor(executionThreads: ExecutionThreads)
-    : UseCaseHelper<${useCaseName}.Request, IUseCase.NoResponseValue, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>, Throwable>(executionThreads), ${useCaseName} {
+    : UseCaseHelper<${useCaseName}.Request, IUseCase.NoResponseValue, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>>(executionThreads), ${useCaseName} {
 
     override fun exec(request: ${useCaseName}.Request, delegateSubscriber: IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>)
       : Observable<IUseCase.NoResponseValue> = execute(request, delegateSubscriber, ProcessImpl())
@@ -75,7 +75,7 @@ interface ${useCaseName} : IUseCase {
 }
 <#else>
 internal class ${useCaseName}Impl @Inject constructor(executionThreads: ExecutionThreads)
-    : UseCaseHelper<IUseCase.NoRequestValue, IUseCase.NoResponseValue, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>, Throwable>(executionThreads), ${useCaseName} {
+    : UseCaseHelper<IUseCase.NoRequestValue, IUseCase.NoResponseValue, ${useCaseName}Impl.ProcessImpl, IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>>(executionThreads), ${useCaseName} {
 
     override fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>)
       : Observable<IUseCase.NoResponseValue> = execute(IUseCase.NoRequestValue.INSTANCE, delegateSubscriber, ProcessImpl())
