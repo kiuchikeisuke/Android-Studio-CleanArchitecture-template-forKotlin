@@ -17,14 +17,14 @@
         constraints="class|unique|nonempty"
         default="Main"
         help="The name of the presenter tag to create" />
-        
+
     <parameter
         id="moduleName"
         name="moduleName"
         type="string"
         constraints="module|nonempty"
-        suggest="app"
-        default="app"
+        suggest="presentation"
+        default="presentation"
         help="target Module" />
 
     <parameter
@@ -46,13 +46,13 @@
         help="The name of the Module class name to create" />
 
     <parameter
-        id="presenterViewModelName"
-        name="PresenterViewModel Name"
+        id="presenterName"
+        name="Presenter Name"
         type="string"
         constraints="class|unique|nonempty"
-        suggest="${presenterTagName}PresenterViewModel"
-        default="MainPresenterViewModel"
-        help="The name of the PresenterViewModel class name to create" />
+        suggest="${presenterTagName}Presenter"
+        default="MainPresenter"
+        help="The name of the Presenter class name to create" />
 
     <parameter
         id="activityName"

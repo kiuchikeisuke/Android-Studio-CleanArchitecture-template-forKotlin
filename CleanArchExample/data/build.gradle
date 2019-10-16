@@ -1,0 +1,13 @@
+apply plugin: 'common-library'
+
+android {
+    testOptions {
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":domain")
+}
