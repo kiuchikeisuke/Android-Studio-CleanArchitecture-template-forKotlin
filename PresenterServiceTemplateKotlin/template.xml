@@ -23,10 +23,10 @@
         name="moduleName"
         type="string"
         constraints="module|nonempty"
-        suggest="app"
-        default="app"
+        suggest="presentation"
+        default="presentation"
         help="target Module" />
-        
+
     <parameter
         id="contractName"
         name="Contract Name"

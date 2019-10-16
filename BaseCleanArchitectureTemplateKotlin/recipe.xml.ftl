@@ -22,38 +22,27 @@
     <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources" />
     <mkdir at="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions" />
 
+    <!-- init buildSrc -->
+    <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src"/>
+    <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src/main"/>
+    <mkdir at="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin"/>
+    <instantiate from="root/src/buildSrc/android-application.gradle.kts.ftl"
+             to="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/android-application.gradle.kts" />
+    <instantiate from="root/src/buildSrc/build.gradle.kts.ftl"
+             to="${escapeXmlAttribute(topOut)}/buildSrc/build.gradle.kts" />
+    <instantiate from="root/src/buildSrc/common-library.gradle.kts.ftl"
+            to="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/common-library.gradle.kts" />
+    <instantiate from="root/src/buildSrc/Dependencies.kt.ftl"
+            to="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/Dependencies.kt" />
+    <instantiate from="root/src/buildSrc/settings.gradle.kts.ftl"
+            to="${escapeXmlAttribute(topOut)}/buildSrc/settings.gradle.kts" />
 
     <!-- init build.gradle -->
     <@kt.addAllKotlinDependencies />
     <instantiate from="root/top_build.gradle.ftl"
              to="${escapeXmlAttribute(topOut)}/FIXME_merge_to_build.gradle" />
-    <instantiate from="root/versions.gradle.ftl"
-             to="${escapeXmlAttribute(topOut)}/versions.gradle" />
     <instantiate from="root/build.gradle.ftl"
              to="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
-    <dependency mavenUrl="com.google.dagger:dagger:2.+" />
-    <dependency mavenUrl="com.google.dagger:dagger-android:2.+" />
-    <dependency mavenUrl="com.google.dagger:dagger-android-support:2.+" />
-    <dependency mavenUrl="io.reactivex.rxjava2:rxjava:+" />
-    <dependency mavenUrl="io.reactivex.rxjava2:rxkotlin:+" />
-    <dependency mavenUrl="io.reactivex.rxjava2:rxandroid:+" />
-    <dependency mavenUrl="com.jakewharton.threetenabp:threetenabp:+" />
-    <dependency mavenUrl="com.android.support.constraint:constraint-layout:+" />
-    <dependency mavenUrl="androidx.core:core-ktx:+" />
-    <dependency mavenUrl="com.jakewharton.timber:timber:+" />
-    <dependency mavenUrl="com.squareup.leakcanary:leakcanary-android:+" gradleConfiguration="debugCompile"/>
-    <dependency mavenUrl="androidx.lifecycle:lifecycle-extensions:+"/>
-    <dependency mavenUrl="androidx.lifecycle:lifecycle-reactivestreams:+"/>
-    <!-- testLibraries -->
-    <dependency mavenUrl="org.jetbrains.spek:spek-api:1.1.5" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.jetbrains.spek:spek-junit-platform-engine:1.1.5" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.robolectric:robolectric:4.0-alpha-2" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.assertj:assertj-core:3.10.0" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.mockito:mockito-core:+" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.junit.platform:junit-platform-runner:1.1.0" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test:+" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-test-junit:+" gradleConfiguration="testCompile" />
-    <dependency mavenUrl="org.jetbrains.kotlin:kotlin-reflect:+" gradleConfiguration="testCompile"/>
 
     <#if includeRetrofit>
       <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
@@ -112,24 +101,18 @@
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/ViewModelFactory.kt" />
     <instantiate from="root/src/app_package/RootComponent.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/RootComponent.kt" />
+    <instantiate from="root/src/app_package/UseCaseModules.kt.ftl"
+                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/UseCaseModules.kt" />
     <instantiate from="root/src/app_package/BasePresenter.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BasePresenter.kt" />
     <instantiate from="root/src/app_package/BaseView.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/BaseView.kt" />
     <instantiate from="root/src/app_package/ExecutionThreads.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/ExecutionThreads.kt" />
-    <instantiate from="root/src/app_package/IoUseCase.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/IoUseCase.kt" />
     <instantiate from="root/src/app_package/RepositoryModules.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/di/RepositoryModules.kt" />
     <instantiate from="root/src/app_package/RootApplication.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/${appClassName}.kt" />
-    <instantiate from="root/src/app_package/InputUseCase.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/InputUseCase.kt" />
-    <instantiate from="root/src/app_package/OutputUseCase.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/OutputUseCase.kt" />
-    <instantiate from="root/src/app_package/NoIoUseCase.kt.ftl"
-                  to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/NoIoUseCase.kt" />
     <instantiate from="root/src/app_package/UseCase.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/utils/commons/UseCase.kt" />
     <instantiate from="root/src/app_package/Activity.kt.ftl"

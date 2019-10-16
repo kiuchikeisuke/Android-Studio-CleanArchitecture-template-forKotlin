@@ -12,6 +12,7 @@ import javax.inject.Singleton
         ApplicationModule::class,
         RepositoryModules::class,
         ApiModules::class,
+        UseCaseModules::class,
         BindingModules::class])
 interface RootComponent:AndroidInjector<${appClassName}> {
     @Component.Builder

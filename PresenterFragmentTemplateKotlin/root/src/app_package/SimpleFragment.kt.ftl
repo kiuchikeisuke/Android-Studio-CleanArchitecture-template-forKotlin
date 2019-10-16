@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.${fragmentLayoutName}.*
 import javax.inject.Inject
 <#if applicationPackage??>
@@ -16,18 +14,19 @@ import ${applicationPackage}.utils.di.Injectable
 </#if>
 
 class ${fragmentName} : Fragment(), Injectable, ${contractName}.View {
-
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val presenterVM:${presenterViewModelName}  by lazy {
-        // If share ViewModel with other fragments on same Activity, fix 'this' -> 'activity!!'
-        ViewModelProviders.of(this, viewModelFactory).get(${presenterViewModelName}::class.java)
-    }
+    @Inject
+    lateinit var presenter: ${contractName}.Presenter
 
     private lateinit var binding: ${bindingName}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = ${bindingName}.inflate(inflater, container!!, false)
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.dispose()
     }
 
     companion object {
