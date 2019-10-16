@@ -22,8 +22,15 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            versionNameSuffix = "-dubug"
+        }
         getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
+            isZipAlignEnabled = true
+            isShrinkResources = true
             consumerProguardFile(file("proguard-rules.pro"))
         }
     }

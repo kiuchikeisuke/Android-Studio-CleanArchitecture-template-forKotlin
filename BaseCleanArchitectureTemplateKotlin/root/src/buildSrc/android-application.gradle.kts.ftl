@@ -1,19 +1,16 @@
-import de.mannodermaus.gradle.plugins.junit5.junitPlatform
-
 plugins {
-    id("com.android.library")
+    id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
-    id("de.mannodermaus.android-junit5")
 }
 
 android {
     compileSdkVersion(Versions.compileSdk)
     defaultConfig {
         minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
     }
 
     compileOptions {
@@ -22,9 +19,17 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            versionNameSuffix = "-dubug"
+        }
         getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
+            isZipAlignEnabled = true
+            isShrinkResources = true
             consumerProguardFile(file("proguard-rules.pro"))
+            proguardFiles(File(".//.//proguard").listFiles()!!.filter { it.name.startsWith("proguard") }.toList())
         }
     }
 
@@ -34,22 +39,14 @@ android {
         getByName("androidTest").java.srcDirs("src/androidTest/kotlin")
     }
 
-    testOptions {
-        junitPlatform {
-            filters {
-                includeEngines("spek2")
-                includeEngines("junit-vintage")
-            }
-        }
-        unitTests.isIncludeAndroidResources = true
-    }
-
+    dataBinding.isEnabled = true
 
     dexOptions.javaMaxHeapSize = "2g"
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to arrayOf("*.jar"))))
+    implementation(Deps.Kotlin.stdlibJdk)
     kapt(Deps.Dagger.compiler)
     kapt(Deps.Dagger.processor)
     implementation(Deps.Dagger.core)
@@ -61,21 +58,11 @@ dependencies {
     implementation(Deps.Timber.core)
     implementation(Deps.Threetenabp.core)
 
-    testImplementation(Deps.Test.Spek.core)
-    testImplementation(Deps.Test.Spek.runner)
-    testImplementation(Deps.Test.MockK.core)
-    testImplementation(Deps.Test.Kotlin.core)
-    testImplementation(Deps.Test.Kotlin.junit)
-    testImplementation(Deps.Test.Kotlin.reflect)
-    testImplementation(Deps.Test.Kotlin.stdlibJdk)
-    testImplementation(Deps.Test.JUnit.core)
-    testImplementation(Deps.Test.JUnit.runner)
-    testImplementation(Deps.Test.JUnit.jupiterApi)
-    testImplementation(Deps.Test.JUnit.jupiterEngine)
-    testImplementation(Deps.Test.JUnit.vintageEngine)
 
+    testImplementation(Deps.Test.JUnit.core)
     androidTestImplementation(Deps.Test.AndroidX.runner)
     androidTestImplementation(Deps.Test.AndroidX.espresso)
+    debugImplementation(Deps.Leakanary.core)
 }
 
 kotlin {

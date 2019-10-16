@@ -15,9 +15,10 @@ class CleanArchMainPresenterViewModel @Inject constructor(private val getDayOfWe
             Language.Japanese -> getDayOfWeek.execute(
                 GetDayOfWeek.Request(language),
                 next = { next("今日は " + it.word) })
-            Language.Germany -> getDayOfWeek.execute(
-                GetDayOfWeek.Request(language),
-                next = { next("Heute ist " + it.word) })
+            // DEMO
+//            Language.Germany -> getDayOfWeek.execute(
+//                GetDayOfWeek.Request(language),
+//                next = { next("Heute ist " + it.word) })
         }
     }
 

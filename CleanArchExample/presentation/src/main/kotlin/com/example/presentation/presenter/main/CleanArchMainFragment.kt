@@ -30,9 +30,10 @@ class CleanArchMainFragment : Fragment(), Injectable, CleanArchMainContract.View
         binding.buttonJp.setOnClickListener {
             presenterVM.loadDayOfWeek(Language.Japanese) { binding.textView.text = it }
         }
-        binding.buttonGar.setOnClickListener {
-            presenterVM.loadDayOfWeek(Language.Germany) { binding.textView.text = it }
-        }
+        // DEMO
+//        binding.buttonGar.setOnClickListener {
+//            presenterVM.loadDayOfWeek(Language.Germany) { binding.textView.text = it }
+//        }
         return binding.root
     }
 

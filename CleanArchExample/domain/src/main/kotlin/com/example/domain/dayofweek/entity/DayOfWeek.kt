@@ -9,3 +9,11 @@ enum class DayOfWeek {
     SATURDAY,
     SUNDAY;
 }
+
+data class DayOfWeekMapper(val mapper: Map<DayOfWeek, String>) {
+    init {
+        if (mapper.size != DayOfWeek.values().size) {
+            throw IllegalArgumentException("mapper size isn't equal DayOfWeeks")
+        }
+    }
+}
