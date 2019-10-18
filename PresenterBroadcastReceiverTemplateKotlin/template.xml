@@ -37,8 +37,8 @@
         help="The name of the contract interface name to create" />
 
     <parameter
-        id="moduleName"
-        name="Module Name"
+        id="moduleClassName"
+        name="Module Class Name"
         type="string"
         constraints="class|unique|nonempty"
         suggest="${presenterTagName}Module"
