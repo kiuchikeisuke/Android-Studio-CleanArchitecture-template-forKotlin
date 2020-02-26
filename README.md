@@ -15,6 +15,22 @@ Or,please use V1.X templates
 ## Hierarchy
 Here's the hierarchy it follows:
 ```
+<Root>
+    +--- buildSrc
+    |     +--- main
+    |           +--- kotlin
+    |                  - Dependencies.kt
+    |                  - common-library.gradle.kts
+    |                  - android-application.gradle.kts
+    |- android-application.gradle.kts
+    |- build.gradle.kts
+    |
+    +--- proguard
+          - XXX.pro
+          - YYY.pro
+          - ...
+
+     
 com.company.app
     +--- data
     |     - datasource
