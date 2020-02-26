@@ -3,7 +3,10 @@ package ${packageName}
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import ${packageName}.${appClassName}
+import ${packageName}.${appClassName}.data.ApiModules
+import ${packageName}.${appClassName}.data.RepositoryModules
+import ${packageName}.${appClassName}.domain.UseCaseModules
+import ${packageName}.${appClassName}.presenter.BindingModules
 import javax.inject.Singleton
 
 @Singleton
