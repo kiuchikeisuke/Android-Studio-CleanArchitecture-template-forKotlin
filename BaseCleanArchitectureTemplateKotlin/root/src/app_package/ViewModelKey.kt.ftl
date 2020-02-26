@@ -1,4 +1,4 @@
-package ${packageName}.utils.annotations
+package ${packageName}.presenter.utils.annotations
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

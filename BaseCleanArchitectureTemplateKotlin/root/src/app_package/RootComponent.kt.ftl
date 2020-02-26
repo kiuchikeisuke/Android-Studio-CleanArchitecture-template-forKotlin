@@ -1,4 +1,4 @@
-package ${packageName}.utils.di
+package ${packageName}
 
 import dagger.Component
 import dagger.android.AndroidInjector

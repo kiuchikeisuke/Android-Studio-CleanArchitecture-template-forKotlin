@@ -1,4 +1,4 @@
-package ${packageName}.utils.extensions
+package ${packageName}.presenter.utils.extensions
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams

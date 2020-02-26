@@ -1,4 +1,4 @@
-package ${packageName}.utils.di
+package ${packageName}.presenter
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds

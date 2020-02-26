@@ -1,4 +1,4 @@
-package ${packageName}.utils.di
+package ${packageName}.presenter.utils.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

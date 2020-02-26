@@ -1,6 +1,6 @@
-package ${packageName}.utils.di
+package ${packageName}
 
-import ${packageName}.utils.commons.ExecutionThreads
+import ${packageName}.domain.utils.commons.ExecutionThreads
 
 import android.content.Context
 import android.content.SharedPreferences

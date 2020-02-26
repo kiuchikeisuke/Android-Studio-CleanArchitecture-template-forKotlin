@@ -1,4 +1,4 @@
-package ${packageName}.utils.di
+package ${packageName}.presenter.utils.di
 
 import android.app.Activity
 import android.app.Application

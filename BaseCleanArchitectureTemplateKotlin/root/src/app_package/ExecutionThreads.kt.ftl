@@ -1,4 +1,4 @@
-package ${packageName}.utils.commons
+package ${packageName}.domain.utils.commons
 
 import io.reactivex.Scheduler
 
