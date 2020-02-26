@@ -24,7 +24,7 @@ android {
             versionNameSuffix = "-dubug"
         }
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             isDebuggable = false
             isZipAlignEnabled = true
             isShrinkResources = true
