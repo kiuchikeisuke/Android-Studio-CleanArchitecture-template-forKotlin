@@ -3,7 +3,9 @@ plugins {
 }
 
 repositories {
+    maven(url = "https://plugins.gradle.org/m2/")
     google()
+    mavenCentral()
     jcenter()
 }
 
