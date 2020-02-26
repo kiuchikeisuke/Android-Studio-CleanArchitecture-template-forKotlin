@@ -28,8 +28,10 @@ android {
             isDebuggable = false
             isZipAlignEnabled = true
             isShrinkResources = true
-            consumerProguardFile(file("proguard-rules.pro"))
-            proguardFiles(File(".//.//proguard").listFiles()!!.filter { it.name.startsWith("proguard") }.toList())
+            proguardFiles(this@android.getDefaultProguardFile("proguard-android.txt"))
+            rootProject.fileTree("proguard").forEach {
+                proguardFiles(it)
+            }
         }
     }
 
