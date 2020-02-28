@@ -10,7 +10,7 @@ import javax.inject.Inject
 <#if applicationPackage??>
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.${bindingName}
-import ${applicationPackage}.utils.di.Injectable
+import ${applicationPackage}.presenter.utils.di.Injectable
 </#if>
 
 class ${fragmentName} : Fragment(), Injectable, ${contractName}.View {

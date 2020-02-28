@@ -1,4 +1,4 @@
-package ${packageName}.utils.di
+package ${packageName}.domain
 
 import dagger.Binds
 import dagger.Module

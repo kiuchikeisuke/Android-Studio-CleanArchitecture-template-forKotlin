@@ -1,3 +1,5 @@
+/* Common Library for multi module */
+
 import de.mannodermaus.gradle.plugins.junit5.junitPlatform
 
 plugins {
@@ -6,6 +8,9 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("de.mannodermaus.android-junit5")
+    <#if includeRealm>
+    id("realm-android")
+    </#if>
 }
 
 android {
@@ -68,6 +73,8 @@ dependencies {
     implementation(Deps.Timber.core)
     implementation(Deps.Threetenabp.core)
 
+    //FIXME Add the required libraries here for mutli module
+
     testImplementation(Deps.Test.Spek.core)
     testImplementation(Deps.Test.Spek.runner)
     testImplementation(Deps.Test.MockK.core)
@@ -81,8 +88,8 @@ dependencies {
     testImplementation(Deps.Test.JUnit.jupiterEngine)
     testImplementation(Deps.Test.JUnit.vintageEngine)
 
-    androidTestImplementation(Deps.Test.AndroidX.runner)
-    androidTestImplementation(Deps.Test.AndroidX.espresso)
+    androidTestImplementation(Deps.Test.Android.runner)
+    androidTestImplementation(Deps.Test.Android.espresso)
 }
 
 kotlin {

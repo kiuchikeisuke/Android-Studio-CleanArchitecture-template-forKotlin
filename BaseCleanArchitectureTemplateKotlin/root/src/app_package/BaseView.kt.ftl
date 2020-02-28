@@ -1,4 +1,4 @@
-package ${packageName}.utils.commons
+package ${packageName}.presenter.utils.commons
 
 interface BaseView {
 }
