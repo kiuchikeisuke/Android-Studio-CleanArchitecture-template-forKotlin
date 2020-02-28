@@ -78,7 +78,6 @@
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/presenter/utils/annotations"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/presenter/utils/commons"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/presenter/utils/di"/>
-    <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/presenter/utils/exceptions"/>
     <mkdir at="${escapeXmlAttribute(srcOutKotlin)}/presenter/utils/extensions"/>
     <instantiate from="root/src/app_package/BindingModules.kt.ftl"
                   to="${escapeXmlAttribute(srcOutKotlin)}/presenter/BindingModules.kt" />

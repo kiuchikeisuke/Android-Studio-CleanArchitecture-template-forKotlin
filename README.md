@@ -22,6 +22,7 @@ Here's the hierarchy it follows:
     |                  - Dependencies.kt
     |                  - common-library.gradle.kts
     |                  - android-application.gradle.kts
+    |  
     |- android-application.gradle.kts
     |- build.gradle.kts
     |
@@ -30,46 +31,55 @@ Here's the hierarchy it follows:
           - YYY.pro
           - ...
 
-     
+
 com.company.app
     +--- data
-    |     - datasource
-    |     - entity
+    |     +--- datasource
+    |     |
+    |     +--- utils
+    |     |     +--- extensions
+    |     |            - Observable
+    |     |
+    |     | - ApiModules
+    |     | - RepositoryModules
     |
     +--- domain
+    |     +--- entity
+    |     |
+    |     +--- repository
+    |     |
+    |     +--- usecase
+    |     |
+    |     +--- utils
+    |     |     +--- commons
+    |     |            - ExecutionThreads
+    |     |            - UseCase
+    |     |
+    |     | - UseCaseModules
     |
     +--- presenter
+    |     +--- utils
+    |     |     +--- annotations
+    |     |     |      - ActivityScope
+    |     |     |      - ViewModelKey
+    |     |     +--- commons
+    |     |     |      - BasePresenter
+    |     |     |      - BaseView
+    |     |     |      - ViewModelFactory
+    |     |     |
+    |     |     +--- di
+    |     |     |      - Injectable
+    |     |     |
+    |     |     +--- extensions
+    |     |            - Activity
+    |     |            - Fragment
+    |     |            - LiveDataReactiveStreams
+    |     |
+    |     | - BindingModules
     |
-    +--- utils
-    |     +--- annotations
-    |     |     - ActivityScope
-    |     |     - ViewModelKey
-    |     |
-    |     +--- commons
-    |     |     - BasePresenter
-    |     |     - BaseView
-    |     |     - DefaultDisposableObserver
-    |     |     - ExecutionThreads
-    |     |     - InputOnlyUseCase
-    |     |     - IoUseCase
-    |     |     - OutputOnlyUseCase
-    |     |     - SimpleUseCase
-    |     |     - UseCase
-    |     +--- di
-    |     |     - ApiModules
-    |     |     - ApplicationModule
-    |     |     - BindingModules
-    |     |     - Injectable
-    |     |     - RepositoryModules
-    |     |     - RootComponent
-    |     |     - ViewModelFactory
-    |     |
-    |     +--- exceptions
-    |     |
-    |     +--- extensions
-    |           - Observable
-    |
+    | - ApplicationModule
     | - MainApplication
+    | - RootComponent
 
 res
  +--- layout
@@ -94,7 +104,7 @@ You must satisfy the following conditions.
 - [android-ktx](https://github.com/android/android-ktx)
 - [DataBinding](https://developer.android.com/topic/libraries/data-binding/index.html)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html)
-- [Spek1.X](http://spekframework.org/docs/latest/)
+- [Spek2.X](http://spekframework.org/docs/latest/)
 - [Mockito](http://site.mockito.org/)
 - [robolectric](http://robolectric.org/)
 - [Assert-J](http://joel-costigliola.github.io/assertj/)
