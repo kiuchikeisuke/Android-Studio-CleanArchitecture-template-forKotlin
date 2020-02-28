@@ -2,10 +2,10 @@ package ${packageName}
 
 import io.reactivex.Observable
 <#if applicationPackage??>
-import ${applicationPackage}.utils.commons.ExecutionThreads
-import ${applicationPackage}.utils.commons.IUseCase
-import ${applicationPackage}.utils.commons.UseCaseHelper
-import ${applicationPackage}.utils.commons.UseCaseProcess
+import ${applicationPackage}.domain.utils.commons.ExecutionThreads
+import ${applicationPackage}.domain.utils.commons.IUseCase
+import ${applicationPackage}.domain.utils.commons.UseCaseHelper
+import ${applicationPackage}.domain.utils.commons.UseCaseProcess
 </#if>
 import javax.inject.Inject
 

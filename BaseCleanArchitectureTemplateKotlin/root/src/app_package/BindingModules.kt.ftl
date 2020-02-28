@@ -1,8 +1,9 @@
-package ${packageName}.utils.di
+package ${packageName}.presenter
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
+import ${packageName}.${appClassName}.presenter.utils.commons.ViewModelFactory
 
 /* bind modules for Presenter's modules */
 @Module

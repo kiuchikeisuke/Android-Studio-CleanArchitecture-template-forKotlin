@@ -1,8 +1,8 @@
 package ${packageName}
 
 <#if applicationPackage??>
-import ${applicationPackage}.utils.di.DaggerRootComponent
-import ${applicationPackage}.utils.di.applyAutoInjector
+import ${applicationPackage}.DaggerRootComponent
+import ${applicationPackage}.presenter.utils.di.applyAutoInjector
 </#if>
 import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector

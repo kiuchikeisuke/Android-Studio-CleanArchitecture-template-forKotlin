@@ -1,4 +1,4 @@
-package ${packageName}.utils.commons
+package ${packageName}.domain.utils.commons
 
 import dagger.internal.Preconditions
 import io.reactivex.Observable

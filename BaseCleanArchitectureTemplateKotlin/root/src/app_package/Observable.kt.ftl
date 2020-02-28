@@ -1,4 +1,4 @@
-package ${packageName}.utils.extensions
+package ${packageName}.data.utils.extensions
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

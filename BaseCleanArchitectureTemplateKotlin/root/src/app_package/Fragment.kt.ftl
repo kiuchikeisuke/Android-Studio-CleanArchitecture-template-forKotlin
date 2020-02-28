@@ -1,4 +1,4 @@
-package ${packageName}.utils.extensions
+package ${packageName}.presenter.utils.extensions
 
 import androidx.fragment.app.Fragment
 
