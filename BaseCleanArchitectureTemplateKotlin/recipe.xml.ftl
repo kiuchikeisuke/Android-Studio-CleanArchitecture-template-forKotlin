@@ -16,24 +16,17 @@
     <instantiate from="root/src/buildSrc/settings.gradle.kts.ftl"
             to="${escapeXmlAttribute(topOut)}/buildSrc/settings.gradle.kts" />
 
+    <open file="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/android-application.gradle.kts" />
+    <open file="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/common-library.gradle.kts" />
+    <open file="${escapeXmlAttribute(topOut)}/buildSrc/src/main/kotlin/Dependencies.kt" />
+    <open file="${escapeXmlAttribute(topOut)}/buildSrc/build.gradle.kts" />
+
     <!-- init build.gradle -->
     <@kt.addAllKotlinDependencies />
-    <instantiate from="root/top_build.gradle.ftl"
-             to="${escapeXmlAttribute(topOut)}/FIXME_merge_to_build.gradle" />
     <instantiate from="root/build.gradle.ftl"
              to="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
-
-    <#if includeRetrofit>
-      <dependency mavenUrl="com.squareup.retrofit2:retrofit:+" />
-      <dependency mavenUrl="com.squareup.retrofit2:converter-scalars:+" />
-      <dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:+" />
-      <dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:+" />
-      <dependency mavenUrl="com.squareup.retrofit:converter-moshi:+" />
-      <dependency mavenUrl="com.squareup.moshi:moshi:+" />
-      <dependency mavenUrl="com.squareup.moshi:moshi-kotlin:+" />
-      <!-- testLibraries -->
-      <dependency mavenUrl="com.squareup.okhttp3:mockwebserver:+" gradleConfiguration="testCompile"/>
-    </#if>
+    <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />
+    <open file="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
 
     <!-- init proguard -->
     <mkdir at="${escapeXmlAttribute(topOut)}/proguard" />
@@ -70,10 +63,6 @@
     <!-- init base res -->
     <instantiate from="root/res/layout/base_activity.xml.ftl"
                    to="${escapeXmlAttribute(resOut)}/layout/base_activity.xml" />
-    <open file="${escapeXmlAttribute(topOut)}/build.gradle" />
-    <open file="${escapeXmlAttribute(topOut)}/FIXME_merge_to_build.gradle" />
-    <open file="${escapeXmlAttribute(projectOut)}/build.gradle" />
-    <open file="${escapeXmlAttribute(projectOut)}/FIXME_merge_to_build.gradle" />
 
     <!-- init base Classes For app module -->
     <instantiate from="root/src/app_package/RootApplication.kt.ftl"
@@ -143,4 +132,5 @@
     <!-- init mockito setting -->
     <instantiate from="root/src/test_package/org.mockito.plugins.MockMaker.ftl"
                   to="${escapeXmlAttribute(projectOut)}/src/test/resources/mockito-extensions/org.mockito.plugins.MockMaker" />
+
 </recipe>

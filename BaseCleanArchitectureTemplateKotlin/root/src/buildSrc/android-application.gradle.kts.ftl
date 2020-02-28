@@ -3,6 +3,10 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("com.github.konifar.gradle.unused-resources-remover")
+    <#if includeRealm>
+    id("realm-android")
+    </#if>
 }
 
 android {
@@ -60,10 +64,11 @@ dependencies {
     implementation(Deps.Timber.core)
     implementation(Deps.Threetenabp.core)
 
+    //FIXME Add the required libraries here for app module
 
     testImplementation(Deps.Test.JUnit.core)
-    androidTestImplementation(Deps.Test.AndroidX.runner)
-    androidTestImplementation(Deps.Test.AndroidX.espresso)
+    androidTestImplementation(Deps.Test.Android.runner)
+    androidTestImplementation(Deps.Test.Android.espresso)
     debugImplementation(Deps.Leakanary.core)
 }
 
