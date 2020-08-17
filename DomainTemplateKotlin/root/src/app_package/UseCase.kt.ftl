@@ -24,7 +24,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
 }
 
 // FIXME !! add following sourceCode to UseCaseModules
-// @Binds internal abstract fun bind${useCaseName}(usecaseImpl: ${useCaseName}Impl): ${useCaseName}
+// @Binds internal abstract fun bind${useCaseName}(useCaseImpl: ${useCaseName}Impl): ${useCaseName}
 
 interface ${useCaseName} : IUseCase {
     fun exec(request: Request, delegateSubscriber: IUseCase.DelegateSubscriber<Response>): Observable<Response>
@@ -46,7 +46,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
 }
 
 // FIXME !! add following sourceCode to UseCaseModules
-// @Binds internal abstract fun bind${useCaseName}(usecaseImpl: ${useCaseName}Impl): ${useCaseName}
+// @Binds internal abstract fun bind${useCaseName}(useCaseImpl: ${useCaseName}Impl): ${useCaseName}
 
 interface ${useCaseName} : IUseCase {
     fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<Response>): Observable<Response>
@@ -67,7 +67,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
 }
 
 // FIXME !! add following sourceCode to UseCaseModules
-// @Binds internal abstract fun bind${useCaseName}(usecaseImpl: ${useCaseName}Impl): ${useCaseName}
+// @Binds internal abstract fun bind${useCaseName}(useCaseImpl: ${useCaseName}Impl): ${useCaseName}
 
 interface ${useCaseName} : IUseCase {
     fun exec(request: Request, delegateSubscriber: IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>): Observable<IUseCase.NoResponseValue>
@@ -88,7 +88,7 @@ internal class ${useCaseName}Impl @Inject constructor(executionThreads: Executio
 }
 
 // FIXME !! add following sourceCode to UseCaseModules
-// @Binds internal abstract fun bind${useCaseName}(usecaseImpl: ${useCaseName}Impl): ${useCaseName}
+// @Binds internal abstract fun bind${useCaseName}(useCaseImpl: ${useCaseName}Impl): ${useCaseName}
 
 interface ${useCaseName} : IUseCase {
     fun exec(delegateSubscriber: IUseCase.DelegateSubscriber<IUseCase.NoResponseValue>): Observable<IUseCase.NoResponseValue>
